@@ -23,21 +23,11 @@ impl Solution {
     let mut root = &head;
 
     while let Some(node) = root {
-      if node.is_none() {
-        break;
-      }
       vec.push(node);
       root = &node.next;
     }
     let mut root = &head;
     while let Some(node) = root {
-      if node.next.is_none() {
-        let mut top = vec.pop().unwrap();
-        if top.val != node.val {
-          return false;
-        }
-        break;
-      }
       let mut top = vec.pop().unwrap();
       if top.val != node.val {
         return false;
