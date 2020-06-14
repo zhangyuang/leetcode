@@ -1,7 +1,11 @@
-# Leetcode
+# leetcode
 
-使用 `Rust` 进行Leetcode的题目解答
+solve questions in leetcode by Rust
 
-## 快速查看题目
+## classify
 
-[回文链表](./is_palindrome/src/lib.rs)
+linkList, binaryTree, dynamic programing
+
+### linkList
+
+[回文链表|is_palindrome](./is_palindrome/src/lib.rs)

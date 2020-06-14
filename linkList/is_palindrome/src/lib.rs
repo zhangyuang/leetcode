@@ -23,8 +23,7 @@ impl Solution {
     let mut root = &head;
 
     while let Some(node) = root {
-      if node.next.is_none() {
-        vec.push(node);
+      if node.is_none() {
         break;
       }
       vec.push(node);
