@@ -14,30 +14,6 @@ impl ListNode {
 
 struct Solution {}
 
-use std::collections::HashMap;
-
-impl Solution {
-  pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-    if head.is_none() {
-      return None;
-    }
-    let mut head = Some(Box::new(ListNode { val: 1, next: head }));
-
-    let mut root = &head;
-    let mut hashMap = HashMap::new();
-
-    while let Some(node) = root {
-      if hashMap.get(&node.val).is_none() {
-        hashMap.insert(&node.val, true);
-      } else {
-        delete_node(&mut head, node.val);
-      }
-      root = &node.next;
-    }
-    head.unwrap().next
-  }
-}
-
 fn delete_node(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
   let mut head = Some(Box::new(ListNode { val: 1, next: head }));
 
