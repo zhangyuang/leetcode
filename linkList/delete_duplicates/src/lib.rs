@@ -21,26 +21,31 @@ impl Solution {
     if head.is_none() {
       return None;
     }
-    let mut head = Some(Box::new(ListNode { val: 1, next: head }));
 
-    let mut root = &head;
+    let mut head = Some(Box::new(ListNode {
+      val: 99999, // 防止与用例value冲突
+      next: head,
+    }));
+    let mut head_clone = head.clone();
     let mut hashMap = HashMap::new();
-
+    let mut root = &mut head;
     while let Some(node) = root {
       if hashMap.get(&node.val).is_none() {
-        hashMap.insert(&node.val, true);
+        hashMap.insert(node.val, true);
       } else {
-        delete_node(&mut head, node.val);
+        head_clone = delete_node(head_clone, node.val); // 这里不能直接用head，因为所有权暂时借给了root
       }
-      root = &node.next;
+      root = &mut node.next;
     }
-    head.unwrap().next
+    head_clone.unwrap().next
   }
 }
 
 fn delete_node(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
-  let mut head = Some(Box::new(ListNode { val: 1, next: head }));
-
+  let mut head = Some(Box::new(ListNode {
+    val: 99999,
+    next: head,
+  }));
   let mut root = &mut head;
   while let Some(node) = root {
     let next_node = &mut node.next;
@@ -56,5 +61,6 @@ fn delete_node(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
     }
     root = &mut node.next;
   }
+
   head.unwrap().next
 }

@@ -16,7 +16,6 @@ struct Solution {}
 
 fn delete_node(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
   let mut head = Some(Box::new(ListNode { val: 1, next: head }));
-
   let mut root = &mut head;
   while let Some(node) = root {
     let next_node = &mut node.next;

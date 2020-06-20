@@ -2,9 +2,9 @@
 
 solve questions in leetcode by Rust
 
-## classify
+## Classify
 
-linkList, binaryTree, dynamic programing
+linkedList, binaryTree, dynamic programing
 
 ### linkList
 
