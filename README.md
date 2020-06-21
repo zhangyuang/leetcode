@@ -38,14 +38,15 @@ while let Some(node) = root {
 
 ```
 
-##### 同时获取链表多个所有权
+##### 转移获取链表节点所有权
+
+take方法见[文档](https://doc.rust-lang.org/std/option/enum.Option.html#method.take)
 
 ``` rust
 
-// take()将node打断，这样node只有一个值，返回值是除n1节点外的剩余节点
-// node.next是Option<T>
-// take()是用默认值替换原有的值，所以n1.next就变为None
-next_node = node.next.take(); 
+// 因为next为Box智能指针存储在堆上的节点，不具备Copy属性，无法直接从堆上转移数据否则会造成多次释放的问题。使用take方法将所有权转移出去，并且在原位置留下了None。
+
+let next_node = node.next.take(); 
 
 ```
 
