@@ -20,7 +20,7 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 Cpp 程序员还在打断点
 Rust 程序员还在编译
 
-Rust 解决数据结构问题相比于其他语言十分的困难，就在于变量所有权的borrow与引用。
+Rust 解决数据结构问题相比于其他语言十分的困难，就在于变量所有权的move(转移)与borrow(借用)。
 
 ##### 遍历链表
 
@@ -31,6 +31,8 @@ Rust 解决数据结构问题相比于其他语言十分的困难，就在于变
 let mut root = &mut head;
 while let Some(node) = root {
   let next_node = &mut node.next;
+  // 使用as_mut获取next_node的引用，使用&mut获取.next的引用。以此来获取root下一个节点的下一个节点的引用。直接使用unwrap会导致所有权的move
+  let next_node_next = &mut next_node.as_mut().unwrap().next 
   // 这里面不能再直接使用head，因为head的所有权已经借给了root，在循环体中未归还
   // other code...
   root = &mut node.next;
@@ -40,8 +42,8 @@ while let Some(node) = root {
 
 ##### 转移获取链表节点所有权
 
-对Copy以及Clone的区别查看该[文章](https://zhuanlan.zhihu.com/p/21730929)
-take方法见[文档](https://doc.rust-lang.org/std/option/enum.Option.html#method.take)
+- take方法使用方式见[文档](https://doc.rust-lang.org/std/option/enum.Option.html#method.take)
+- Copy以及Clone的区别可查看该[文章](https://zhuanlan.zhihu.com/p/21730929)  
 
 ``` rust
 
@@ -52,10 +54,17 @@ let next_node = node.next.take();
 
 #### 解题代码
 
-皆通过 `leetcode` 测试用例，可直接粘贴到 `leetcode` 编辑器中调试
+皆通过 leetcode 测试用例，可直接粘贴到 leetcode 编辑器中调试，刷题建议由浅入深，按知识点来刷,不要左右横跳。
+注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star 长期稳定保持更新。
 
-[回文链表|is_palindrome](./linkList/is_palindrome/src/lib.rs)  
-[反转链表|reverse_list](./linkList/reverse_list/src/lib.rs)  
-[链表的中间节点|middle_node](./linkList/middle_node/src/lib.rs)  
-[删除链表节点|delete_node](./linkList/delete_node/src/lib.rs)  
-[删除链表重复节点|delete_duplicates](./linkList/delete_duplicates/src/lib.rs)
+#### Easy
+
+简单难度的链表题
+
+[回文链表|is_palindrome](./linkList/easy/is_palindrome/src/lib.rs)  
+[反转链表|reverse_list](./linkList/easy/reverse_list/src/lib.rs)  
+[链表的中间节点|middle_node](./linkList/easy/middle_node/src/lib.rs)  
+[删除链表节点|delete_node](./linkList/easy/delete_node/src/lib.rs)  
+[删除链表重复节点|delete_duplicates](./linkList/easy/delete_duplicates/src/lib.rs)
+
+#### Medium
