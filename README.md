@@ -56,5 +56,6 @@ let next_node = node.next.take();
 
 [回文链表|is_palindrome](./linkList/is_palindrome/src/lib.rs)  
 [反转链表|reverse_list](./linkList/reverse_list/src/lib.rs)  
+[链表的中间节点|middle_node](./linkList/middle_node/src/lib.rs)  
 [删除链表节点|delete_node](./linkList/delete_node/src/lib.rs)  
 [删除链表重复节点|delete_duplicates](./linkList/delete_duplicates/src/lib.rs)
