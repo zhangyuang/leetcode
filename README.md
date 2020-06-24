@@ -40,12 +40,12 @@ while let Some(node) = root {
 
 ##### 转移获取链表节点所有权
 
+对Copy以及Clone的区别查看该[文章](https://zhuanlan.zhihu.com/p/21730929)
 take方法见[文档](https://doc.rust-lang.org/std/option/enum.Option.html#method.take)
 
 ``` rust
 
 // 因为next为Box智能指针存储在堆上的节点，不具备Copy属性，无法直接从堆上转移数据否则会造成多次释放的问题。使用take方法将所有权转移出去，并且在原位置留下了None。
-
 let next_node = node.next.take(); 
 
 ```
@@ -55,5 +55,6 @@ let next_node = node.next.take();
 皆通过 `leetcode` 测试用例，可直接粘贴到 `leetcode` 编辑器中调试
 
 [回文链表|is_palindrome](./linkList/is_palindrome/src/lib.rs)  
+[反转链表|reverse_list](./linkList/reverse_list/src/lib.rs)  
 [删除链表节点|delete_node](./linkList/delete_node/src/lib.rs)  
 [删除链表重复节点|delete_duplicates](./linkList/delete_duplicates/src/lib.rs)

@@ -41,20 +41,20 @@ impl Solution {
   }
 }
 
-fn delete_node(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+fn delete_node(head:  Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
   let mut head = Some(Box::new(ListNode {
     val: 99999,
     next: head,
   }));
   let mut root = &mut head;
   while let Some(node) = root {
-    let next_node = &mut node.next;
-    match next_node {
+    let next_node_option = &mut node.next;
+    match next_node_option {
       None => break,
-      Some(next_node) => {
-        if next_node.val == val {
+      Some(next_node_box) => {
+        if next_node_box.val == val {
           // 当前节点的下一个节点等于目标节点
-          node.next = next_node.next.take();
+          node.next = next_node_box.next.take();
           break;
         }
       }
