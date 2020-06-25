@@ -2,7 +2,14 @@
 
 # leetcode
 
-Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
+Solve questions in [leetcode](https://leetcode-cn.com/) by Rust  
+
+## 前言
+
+由于 Rust 写数据结构相关的资料特别少并且理解非常困难，所以专门建了个 Repo 用来记录 Rust 刷 leetcode 的解法并包含心得体会，欢迎star会长期稳定更新。  
+https://github.com/zhangyuang/leetcode  
+
+`注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star 长期稳定保持更新。`
 
 ## 分类
 
@@ -55,7 +62,6 @@ let next_node = node.next.take();
 #### 解题代码
 
 皆通过 leetcode 测试用例，可直接粘贴到 leetcode 编辑器中调试，刷题建议由浅入深，按知识点来刷,不要左右横跳。
-注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star 长期稳定保持更新。
 
 #### Easy
 
@@ -68,3 +74,7 @@ let next_node = node.next.take();
 [删除链表重复节点|delete_duplicates](./linkList/easy/delete_duplicates/src/lib.rs)
 
 #### Medium
+
+中等难度的链表题 
+
+[两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)
