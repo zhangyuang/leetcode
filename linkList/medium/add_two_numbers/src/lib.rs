@@ -13,7 +13,6 @@ impl ListNode {
 }
 
 struct Solution {}
-pub struct U256(pub [u64; 4]);
 
 // Rust没有原生的bigint类型，所以在测试用例的极端场景会溢出。leetcode不支持引入第三方crate。所以最佳解决方案应该是按位相加然后进位。或者使用其他提供Bigint类型的语言如js,java
 // 由于主要目的是熟悉Rust语法，这里就直接使用两数相加的解法来写了, 底部附上使用js的解法
