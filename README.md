@@ -77,7 +77,8 @@ let next_node = node.next.take();
 
 中等难度的链表题 
 
-[两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)
+[两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)  
+[两两交换链表中的节点|swap_pairs](./linkList/medium/swap_pairs/src/lib.rs)
 
 ### Dynamic Programing
 

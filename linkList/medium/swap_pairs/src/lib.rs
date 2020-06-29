@@ -20,33 +20,22 @@ impl Solution {
     if head.is_none() {
       return head;
     }
-    let mut l1 = &mut head;
-    while l1.is_some() {
-      let mut node = l1.as_mut().unwrap();
-      let mut l2 = l1.as_mut().unwrap().next.take();
-      if l2.is_none() {
-        break;
+    let mut l1 = head;
+    let mut result = ListNode::new(0);
+    let mut res = &mut result;
+    while let Some(mut l1_node) = l1 {
+      l1 = l1_node.next.take(); // 使用take获取所有权,l1 = 2->3->4, l1_node = 1 此时l1_node.next=None
+      if let Some(mut l2_node) = l1 {
+        l1 = l2_node.next.take(); // l1 = 3->4, l2 = 2, 此时l2_node.next=None
+        l2_node.next = Some(l1_node); // l2 = 2->1
+        res.next = Some(l2_node); // res = 0->2->1,
+        res = res.next.as_mut().unwrap().next.as_mut().unwrap(); // res = 1, res指向末尾
+      } else {
+        // 走到这里说明总的节点个数为奇数个, l1为最后一个节点，没有下一个节点。直接将l1添加到末尾
+        res.next = Some(l1_node);
+        res = res.next.as_mut().unwrap();
       }
-      let mut v = swap_node(l1.take(), l2);
-      println!("{:?}", v[1]);
-      l1 = &mut v[0];
     }
-    None
-  }
-}
-
-fn swap_node(
-  mut l1: Option<Box<ListNode>>,
-  mut l2: Option<Box<ListNode>>,
-) -> Vec<Option<Box<ListNode>>> {
-  match l2.as_mut().unwrap().next.take() {
-    None => vec![l1, l2],
-    Some(node) => {
-      // 2->1->3->4
-      // l1调用take后剩下None
-      l2.as_mut().unwrap().next = l1.take(); // l2指向l1
-      l1 = Some(node); // l1指向原l2的下一个节点，即直接跳到第三个节点
-      vec![l1, l2]
-    }
+    result.next
   }
 }
