@@ -78,3 +78,18 @@ let next_node = node.next.take();
 中等难度的链表题 
 
 [两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)
+
+### Dynamic Programing
+
+动态规划
+
+#### Rust 解动态规划题思路
+
+主要思路与其他语言类似。还是通过寻找状态转移方程(递推关系)，通常要使用 vec 来保存之前的结果来提升性能
+
+#### Easy
+
+简单难度的动态规划题
+
+[爬楼梯|climb_stairs](./dynamic-programing/easy/climb_stairs/src/lib.rs)  
+
