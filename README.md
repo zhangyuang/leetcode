@@ -2,12 +2,12 @@
 
 # leetcode
 
-Solve questions in [leetcode](https://leetcode-cn.com/) by Rust  
+Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 
 ## 前言
 
-由于 Rust 写数据结构相关的资料特别少并且理解非常困难，所以专门建了个 Repo 用来记录 Rust 刷 leetcode 的解法并包含心得体会，欢迎star会长期稳定更新。  
-https://github.com/zhangyuang/leetcode  
+由于 Rust 写数据结构相关的资料特别少并且理解非常困难，所以专门建了个 Repo 用来记录 Rust 刷 leetcode 的解法并包含心得体会，欢迎 star 会长期稳定更新。  
+https://github.com/zhangyuang/leetcode
 
 `注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star 长期稳定保持更新。`
 
@@ -24,10 +24,10 @@ https://github.com/zhangyuang/leetcode
 #### Rust 解链表题思路
 
 > Go 程序员已经下班
-Cpp 程序员还在打断点
-Rust 程序员还在编译
+> Cpp 程序员还在打断点
+> Rust 程序员还在编译
 
-Rust 解决数据结构问题相比于其他语言十分的困难，就在于变量所有权的move(转移)与borrow(借用)。
+Rust 解决数据结构问题相比于其他语言十分的困难，就在于变量所有权的 move(转移)与 borrow(借用)。
 
 ##### 遍历链表
 
@@ -39,7 +39,7 @@ let mut root = &mut head;
 while let Some(node) = root {
   let next_node = &mut node.next;
   // 使用as_mut获取next_node的引用，使用&mut获取.next的引用。以此来获取root下一个节点的下一个节点的引用。直接使用unwrap会导致所有权的move
-  let next_node_next = &mut next_node.as_mut().unwrap().next 
+  let next_node_next = &mut next_node.as_mut().unwrap().next
   // 这里面不能再直接使用head，因为head的所有权已经借给了root，在循环体中未归还
   // other code...
   root = &mut node.next;
@@ -49,13 +49,13 @@ while let Some(node) = root {
 
 ##### 转移获取链表节点所有权
 
-- take方法使用方式见[文档](https://doc.rust-lang.org/std/option/enum.Option.html#method.take)
-- Copy以及Clone的区别可查看该[文章](https://zhuanlan.zhihu.com/p/21730929)  
+- take 方法使用方式见[文档](https://doc.rust-lang.org/std/option/enum.Option.html#method.take)
+- Copy 以及 Clone 的区别可查看该[文章](https://zhuanlan.zhihu.com/p/21730929)
 
-``` rust
+```rust
 
 // 因为next为Box智能指针存储在堆上的节点，不具备Copy属性，无法直接从堆上转移数据否则会造成多次释放的问题。使用take方法将所有权转移出去，并且在原位置留下了None。
-let next_node = node.next.take(); 
+let next_node = node.next.take();
 
 ```
 
@@ -75,10 +75,11 @@ let next_node = node.next.take();
 
 #### Medium
 
-中等难度的链表题 
+中等难度的链表题
 
 [两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)  
-[两两交换链表中的节点|swap_pairs](./linkList/medium/swap_pairs/src/lib.rs)
+[两两交换链表中的节点|swap_pairs](./linkList/medium/swap_pairs/src/lib.rs)  
+[删除链表的倒数第 N 个节点|remove_nth_from_end](./linkList/medium/remove_nth_from_end/src/lib.rs)
 
 ### Dynamic Programing
 
@@ -92,5 +93,4 @@ let next_node = node.next.take();
 
 简单难度的动态规划题
 
-[爬楼梯|climb_stairs](./dynamic-programing/easy/climb_stairs/src/lib.rs)  
-
+[爬楼梯|climb_stairs](./dynamic-programing/easy/climb_stairs/src/lib.rs)
