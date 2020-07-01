@@ -13,7 +13,7 @@ https://github.com/zhangyuang/leetcode
 
 ## 相关资料
 
-官方 API [文档](https://doc.rust-lang.org/std/index.html)
+官方 [API 文档](https://doc.rust-lang.org/std/index.html)  
 [Rust 程序设计语言中文版](https://kaisery.github.io/)
 
 ## 分类
@@ -99,7 +99,11 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 中等难度的树题
 
 [二叉树前序遍历|preorder_traversal](./tree/medium/preorder_traversal/src/lib.rs)  
-[二叉树中序遍历|inorder_traversal](./tree/medium/inorder_traversal/src/lib.rs)
+[二叉树中序遍历|inorder_traversal](./tree/medium/inorder_traversal/src/lib.rs)  
+
+#### Hard
+
+[二叉树后序遍历|postorder_traversal](./tree/hard/postorder_traversal/src/lib.rs)  
 
 ### Dynamic Programing
 
