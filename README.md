@@ -11,6 +11,11 @@ https://github.com/zhangyuang/leetcode
 
 `注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star 长期稳定保持更新。`
 
+## 相关资料
+
+官方 API [文档](https://doc.rust-lang.org/std/index.html)
+[Rust 程序设计语言中文版](https://kaisery.github.io/)
+
 ## 分类
 
 [链表(linkedList)](#linkedList)
@@ -80,6 +85,20 @@ let next_node = node.next.take();
 [两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)  
 [两两交换链表中的节点|swap_pairs](./linkList/medium/swap_pairs/src/lib.rs)  
 [删除链表的倒数第 N 个节点|remove_nth_from_end](./linkList/medium/remove_nth_from_end/src/lib.rs)
+
+### Tree
+
+树，二叉树
+
+#### 解题思路
+
+Rust 构造树需要使用 Rc<T>引用计数智能指针以及 RefCell，使得一个数据具有多个可变的所有者。因为一个子节点可能被多个父节点所共享。
+
+#### Medium
+
+中等难度的树题
+
+[二叉树前序遍历|preorder_traversal](./tree/medium/preorder_traversal/src/lib.rs)
 
 ### Dynamic Programing
 

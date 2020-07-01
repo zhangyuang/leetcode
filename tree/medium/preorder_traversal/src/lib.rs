@@ -27,20 +27,23 @@ impl TreeNode {
 use std::cell::RefCell;
 use std::rc::Rc;
 
-impl Solution {
-  pub fn preorder_traversal(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    let mut v = vec![];
-    let mut stack = vec![];
-    let mut root = &mut root;
-    while let Some(mut node) = root {
-      if node.borrow_mut().left != None {
-        v.push(node.borrow_mut().val);
-        stack.push(node.borrow_mut());
-        root = &mut node.borrow_mut().left;
-      } else {
-        root = &mut stack.pop();
-      }
-    }
-    v
+pub fn preorder_traversal(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+  let mut v = vec![];
+  if root.is_none() {
+    return v;
   }
+  let mut stack = vec![];
+  while stack.len() != 0 || !root.is_none() {
+    while !root.is_none() {
+      // 一直添加左子树直到为空
+      let node = root.unwrap();
+      v.push(node.borrow().val);
+      stack.push(node.clone());
+      root = node.borrow_mut().left.take();
+    }
+    // 从栈中弹出，取节点的右子树
+    root = stack.pop();
+    root = root.unwrap().borrow_mut().right.take();
+  }
+  v
 }
