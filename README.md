@@ -100,6 +100,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 
 [二叉树前序遍历|preorder_traversal](./tree/medium/preorder_traversal/src/lib.rs)  
 [二叉树中序遍历|inorder_traversal](./tree/medium/inorder_traversal/src/lib.rs)  
+[二叉树层次遍历|level_order](./tree/medium/level_order/src/lib.rs)  
 
 #### Hard
 
