@@ -92,13 +92,14 @@ let next_node = node.next.take();
 
 #### 解题思路
 
-Rust 构造树需要使用 Rc<T>引用计数智能指针以及 RefCell，使得一个数据具有多个可变的所有者。因为一个子节点可能被多个父节点所共享。
+Rust 构造树需要使用 Rc<T>[引用计数智能指针](https://kaisery.github.io/trpl-zh-cn/ch15-04-rc.html)以及 [RefCell](https://kaisery.github.io/trpl-zh-cn/ch15-05-interior-mutability.html)，使得一个数据具有多个可变的所有者。因为一个子节点可能被多个父节点所共享。
 
 #### Medium
 
 中等难度的树题
 
-[二叉树前序遍历|preorder_traversal](./tree/medium/preorder_traversal/src/lib.rs)
+[二叉树前序遍历|preorder_traversal](./tree/medium/preorder_traversal/src/lib.rs)  
+[二叉树中序遍历|inorder_traversal](./tree/medium/inorder_traversal/src/lib.rs)
 
 ### Dynamic Programing
 
