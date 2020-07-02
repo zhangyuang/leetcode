@@ -100,7 +100,8 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 
 [二叉树的层次遍历 II|level_order_bottom](./tree/easy/level_order_bottom/src/lib.rs)  
 [二叉树的层平均值|average_of_levels](./tree/easy/average_of_levels/src/lib.rs)  
-[对称二叉树|is_symmetric](./tree/easy/is_symmetric/src/lib.rs)  
+[相同的树|is_symmetric](./tree/easy/is_symmetric/src/lib.rs)  
+[对称二叉树|is_same_tree](./tree/easy/is_same_tree/src/lib.rs)  
 
 #### Medium
 
