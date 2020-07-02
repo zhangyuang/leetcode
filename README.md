@@ -6,10 +6,10 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 
 ## 前言
 
-由于 Rust 写数据结构相关的资料特别少并且理解非常困难，所以专门建了个 Repo 用来记录 Rust 刷 leetcode 的解法并包含心得体会，欢迎 star 会长期稳定更新。  
+由于 Rust 写数据结构相关的资料特别少并且理解非常困难，所以专门建了个 Repo 用来记录 Rust 刷 leetcode 的解法并包含心得体会，欢迎 Star✨ 会长期稳定更新。  
 https://github.com/zhangyuang/leetcode
 
-`注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star 长期稳定保持更新。`
+`注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star✨ 长期稳定保持更新。`
 
 ## 相关资料
 
@@ -100,11 +100,11 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 
 [二叉树前序遍历|preorder_traversal](./tree/medium/preorder_traversal/src/lib.rs)  
 [二叉树中序遍历|inorder_traversal](./tree/medium/inorder_traversal/src/lib.rs)  
-[二叉树层次遍历|level_order](./tree/medium/level_order/src/lib.rs)  
+[二叉树层次遍历|level_order](./tree/medium/level_order/src/lib.rs)
 
 #### Hard
 
-[二叉树后序遍历|postorder_traversal](./tree/hard/postorder_traversal/src/lib.rs)  
+[二叉树后序遍历|postorder_traversal](./tree/hard/postorder_traversal/src/lib.rs)
 
 ### Dynamic Programing
 
