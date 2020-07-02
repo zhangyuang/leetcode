@@ -19,8 +19,8 @@ https://github.com/zhangyuang/leetcode
 ## 分类
 
 [链表(linkedList)](#linkedList)
-[二叉树(binaryTree)]()
-[动态规划(dynamic programing)]()
+[二叉树(binaryTree)](#Tree)
+[动态规划(dynamic programing)](#DynamicPrograming)
 
 ### linkedList
 
@@ -98,7 +98,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 
 简单难度的树题
 
-[二叉树的层次遍历 II|level_order_bottom](./tree/easy/level_order_bottom/src/lib.rs)
+[二叉树的层次遍历 II|level_order_bottom](./tree/easy/level_order_bottom/src/lib.rs)  
 [二叉树的层平均值|average_of_levels](./tree/easy/average_of_levels/src/lib.rs)
 
 #### Medium
@@ -113,7 +113,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 
 [二叉树后序遍历|postorder_traversal](./tree/hard/postorder_traversal/src/lib.rs)
 
-### Dynamic Programing
+### DynamicPrograming
 
 动态规划
 
