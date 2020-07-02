@@ -18,21 +18,32 @@ impl TreeNode {
 }
 
 use std::cell::RefCell;
-use std::collections::VecDeque;
 use std::rc::Rc;
 
 pub fn is_symmetric(mut root: Option<Rc<RefCell<TreeNode>>>) -> bool {
   if root.is_none() {
     return true;
   }
-  let mut res = true;
-  let mut node = root.as_mut().unwrap();
-  if !node.borrow_mut().left.is_none() || !node.borrow_mut().right.is_none() {
-    let left = node.borrow_mut().left;
-    let right = node.borrow_mut().right;
-    if left.val != right.val {
-      res = false
-    }
+  let left = root.as_mut().unwrap().borrow_mut().left.take();
+  let right = root.as_mut().unwrap().borrow_mut().right.take();
+  return check(left, right);
+}
+
+fn check(
+  mut node1: Option<Rc<RefCell<TreeNode>>>,
+  mut node2: Option<Rc<RefCell<TreeNode>>>,
+) -> bool {
+  if node1.is_none() && node2.is_none() {
+    return true;
   }
-  res
+  if node1.is_none() || node2.is_none() {
+    return false;
+  }
+  let node1_left = node1.as_mut().unwrap().borrow_mut().left.take();
+  let node1_right = node1.as_mut().unwrap().borrow_mut().right.take();
+  let node2_left = node2.as_mut().unwrap().borrow_mut().left.take();
+  let node2_right = node2.as_mut().unwrap().borrow_mut().right.take();
+  return node1.as_ref().unwrap().borrow().val == node2.as_ref().unwrap().borrow().val
+    && check(node1_left, node2_right)
+    && check(node2_left, node1_right);
 }
