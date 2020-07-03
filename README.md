@@ -7,7 +7,7 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 ## 前言
 
 由于 Rust 写数据结构相关的资料特别少并且理解非常困难，所以专门建了个 Repo 用来记录 Rust 刷 leetcode 的解法并包含心得体会，欢迎 Star✨ 会长期稳定更新。  
-https://github.com/zhangyuang/leetcode
+[https://github.com/zhangyuang/leetcode](https://github.com/zhangyuang/leetcode)
 
 `注: 以下代码并没有刻意追求最优解，主要目的在于熟悉 Rust 语法以及使用可读性强便于理解的代码来解决问题。欢迎 Star✨ 长期稳定保持更新。`
 
@@ -102,6 +102,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [二叉树的层平均值|average_of_levels](./tree/easy/average_of_levels/src/lib.rs)  
 [相同的树|is_symmetric](./tree/easy/is_symmetric/src/lib.rs)  
 [对称二叉树|is_same_tree](./tree/easy/is_same_tree/src/lib.rs)  
+[平衡二叉树|is_balanced](./tree/easy/is_balanced/src/lib.rs)
 
 #### Medium
 
