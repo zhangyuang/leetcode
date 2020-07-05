@@ -41,7 +41,7 @@ impl Solution {
   }
 }
 
-fn delete_node(head:  Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+fn delete_node(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
   let mut head = Some(Box::new(ListNode {
     val: 99999,
     next: head,
