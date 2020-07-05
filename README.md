@@ -105,6 +105,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [对称二叉树|is_same_tree](./tree/easy/is_same_tree/src/lib.rs)  
 [平衡二叉树|is_balanced](./tree/easy/is_balanced/src/lib.rs)  
 [二叉树的所有路径|binary_tree_paths](./tree/easy/binary_tree_paths/src/lib.rs)  
+[二叉树的最小深度|min_depth](./tree/easy/min_depth/src/lib.rs)  
 
 #### Medium
 
