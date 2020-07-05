@@ -108,6 +108,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [二叉树的最小深度|min_depth](./tree/easy/min_depth/src/lib.rs)  
 [左叶子之和|sum_of_left_leaves](./tree/easy/sum_of_left_leaves/src/lib.rs)  
 [二叉搜索树中的众数|find_mode](./tree/easy/find_mode/src/lib.rs)  
+[二叉搜索树中的搜索|search_bst](./tree/easy/search_bst/src/lib.rs)  
 
 #### Medium
 

@@ -36,7 +36,6 @@ pub fn sum_of_left_leaves(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
   for i in &v {
     sum += i;
   }
-
   sum
 }
 
