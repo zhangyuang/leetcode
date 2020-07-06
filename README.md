@@ -112,6 +112,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [二叉搜索树中的搜索|search_bst](./tree/easy/search_bst/src/lib.rs)  
 [二叉搜索树的第k大节点|kth_largest](./tree/easy/kth_largest/src/lib.rs)  
 [二叉搜索树的范围和|range_sum_bst](./tree/easy/range_sum_bst/src/lib.rs)  
+[二叉搜索树节点最小距离|min_diff_in_bst](./tree/easy/min_diff_in_bst/src/lib.rs)  
 
 #### Medium
 
