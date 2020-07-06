@@ -98,6 +98,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 #### Easy
 
 简单难度的树题
+二叉搜索树解题思路：中序遍历的结果是递增数组
 
 [二叉树的层次遍历 II|level_order_bottom](./tree/easy/level_order_bottom/src/lib.rs)  
 [二叉树的层平均值|average_of_levels](./tree/easy/average_of_levels/src/lib.rs)  
@@ -110,6 +111,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [二叉搜索树中的众数|find_mode](./tree/easy/find_mode/src/lib.rs)  
 [二叉搜索树中的搜索|search_bst](./tree/easy/search_bst/src/lib.rs)  
 [二叉搜索树的第k大节点|kth_largest](./tree/easy/kth_largest/src/lib.rs)  
+[二叉搜索树的范围和|range_sum_bst](./tree/easy/range_sum_bst/src/lib.rs)  
 
 #### Medium
 
