@@ -38,10 +38,10 @@ pub fn binary_tree_paths(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<String> {
   v
 }
 
-fn find_leaf(root: &Option<Rc<RefCell<TreeNode>>>,  v: &mut Vec<String>, str: Option<&mut String>) {
+fn find_leaf(root: &Option<Rc<RefCell<TreeNode>>>, v: &mut Vec<String>, str: Option<&mut String>) {
   // 递归找到叶子节点记录路径即可
   if root.is_none() {
-    return
+    return;
   }
   let val = &root.as_ref().unwrap().borrow().val.to_string();
   let left = &root.as_ref().unwrap().borrow().left;
@@ -51,7 +51,7 @@ fn find_leaf(root: &Option<Rc<RefCell<TreeNode>>>,  v: &mut Vec<String>, str: Op
   match str {
     None => {
       res_str = String::from("");
-    },
+    }
     Some(str) => {
       res_str = str.to_string();
     }
@@ -64,5 +64,5 @@ fn find_leaf(root: &Option<Rc<RefCell<TreeNode>>>,  v: &mut Vec<String>, str: Op
   }
   res_str.push_str("->");
   find_leaf(left, v, Some(&mut res_str));
-  find_leaf(right, v,Some(&mut res_str));
+  find_leaf(right, v, Some(&mut res_str));
 }
