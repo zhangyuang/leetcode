@@ -142,4 +142,5 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [爬楼梯|climb_stairs](./dynamic-programing/easy/climb_stairs/src/lib.rs)  
 [连续数列|max_sub_array](./dynamic-programing/easy/max_sub_array/src/lib.rs)  
 [按摩师|massage](./dynamic-programing/easy/massage/src/lib.rs)  
-[打家劫舍|rob](./dynamic-programing/easy/rob/src/lib.rs) 
+[打家劫舍|rob](./dynamic-programing/easy/rob/src/lib.rs)  
+[使用最小花费爬楼梯|min_cost_climbing_stairs](./dynamic-programing/easy/min_cost_climbing_stairs/src/lib.rs)  
