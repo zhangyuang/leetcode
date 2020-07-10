@@ -19,9 +19,10 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 
 ## 分类
 
-[链表(linkedList)](#linkedList)
-[二叉树(binaryTree)](#Tree)
-[动态规划(dynamic programing)](#DynamicPrograming)
+[链表(linkedList)](#linkedList)  
+[二叉树(binaryTree)](#Tree)  
+[动态规划(dynamic programing)](#DynamicPrograming)  
+[HOT100🔥](#hot100)
 
 ### linkedList
 
@@ -146,3 +147,13 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [打家劫舍|rob](./dynamic-programing/easy/rob/src/lib.rs)  
 [使用最小花费爬楼梯|min_cost_climbing_stairs](./dynamic-programing/easy/min_cost_climbing_stairs/src/lib.rs)  
 [买卖股票的最佳时机|max_profit](./dynamic-programing/easy/max_profit/src/lib.rs)  
+
+### HOT100🔥
+
+Hot100类型题
+
+#### Medium
+
+中等难度的HOT100题
+
+[除自身以外数组的乘积|product_except_self](./hot100/medium/product_except_self/src/lib.rs)  
