@@ -134,7 +134,9 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 
 #### Rust 解动态规划题思路
 
-主要思路与其他语言类似。还是通过寻找状态转移方程(递推关系)，通常要使用 vec 来保存之前的结果来提升性能
+主要思路与其他语言类似。还是通过寻找状态转移方程(递推关系)，通常要使用 vec 来保存之前的结果来提升性能。
+常用到的空间优化方式有滚动数组，来将二维数组压成一维或减少数组空间大小。大部分情况都是背包问题(01背包，完全背包，多重背包)问题的变种。
+学习资料: [liweiwei leetcode 经典动规解析](https://leetcode-cn.com/problems/coin-change/solution/dong-tai-gui-hua-shi-yong-wan-quan-bei-bao-wen-ti-/)
 
 #### Easy
 
@@ -157,3 +159,4 @@ Hot100类型题
 中等难度的HOT100题
 
 [除自身以外数组的乘积|product_except_self](./hot100/medium/product_except_self/src/lib.rs)  
+[零钱兑换|coin_change](./hot100/medium/coin_change/src/lib.rs)  
