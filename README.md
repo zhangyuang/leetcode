@@ -154,6 +154,12 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 
 Hot100类型题
 
+#### Easy
+
+简单难度的HOT100题
+
+[柠檬水找零|lemonade_change](./hot100/easy/lemonade_change/src/lib.rs)  
+
 #### Medium
 
 中等难度的HOT100题
