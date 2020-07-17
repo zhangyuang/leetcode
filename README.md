@@ -159,4 +159,5 @@ Hot100类型题
 中等难度的HOT100题
 
 [除自身以外数组的乘积|product_except_self](./hot100/medium/product_except_self/src/lib.rs)  
+[分割等和子集|can_partition](./hot100/medium/can_partition/src/lib.rs)  
 [零钱兑换|coin_change](./hot100/medium/coin_change/src/lib.rs)  

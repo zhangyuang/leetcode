@@ -4,19 +4,14 @@ use std::cmp::max;
 impl Solution {
   // 01背包变种
   pub fn can_partition(nums: Vec<i32>) -> bool {
-    let mut len = nums.len();
-    let mut res = false;
-    while len >= 2 {
-      let left_arr = nums[0..len - 1].to_vec();
-      let right_arr = nums[len - 1..nums.len()].to_vec();
-      let sum = get_sum(&right_arr);
-      if zero_one_pack(&left_arr, sum) {
-        res = true;
-        break;
-      }
-      len -= 1;
+    // 由于两个集合相等，即每一个集合的sum为总和/2
+    let sum = get_sum(&nums);
+    if sum % 2 != 0 {
+      // 和为奇数直接跳出
+      return false;
     }
-    res
+    let sum_half = sum / 2;
+    zero_one_pack(&nums, sum_half)
   }
 }
 
@@ -28,17 +23,21 @@ fn get_sum(nums: &Vec<i32>) -> usize {
   sum as usize
 }
 fn zero_one_pack(nums: &Vec<i32>, sum: usize) -> bool {
-  // 01背包，物品个数为nums.len, 每个物品的重量为1,背包容量为nums.len
-  let mut dp = vec![0; nums.len() + 1];
-
-  let len = nums.len();
-  for i in 0..len + 1 {
-    for j in (1..nums.len() + 1).rev() {
-      println!("{:?}", dp);
-      dp[j] = max(dp[j], dp[j - 1] + nums[i] as usize)
+  // 01背包，物品个数为nums.len,背包容量为sum
+  let mut dp = vec![0; sum + 1];
+  let mut res = false;
+  for i in 1..nums.len() + 1 {
+    let weight = nums[i - 1];
+    let val = nums[i - 1];
+    for j in (1..sum + 1).rev() {
+      if j >= weight as usize {
+        dp[j] = max(dp[j], dp[j - weight as usize] + val as usize);
+      }
     }
   }
-  if dp[len - 1] == sum {
+  println!("{:?}", dp);
+  println!("{:?}", sum);
+  if dp.pop().unwrap() == sum {
     true
   } else {
     false
@@ -51,7 +50,7 @@ mod tests {
 
   #[test]
   fn tests() {
-    let coins: Vec<i32> = vec![1, 5, 11, 5];
+    let coins: Vec<i32> = vec![1, 2, 3, 6];
     Solution::can_partition(coins);
   }
 }
