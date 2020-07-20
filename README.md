@@ -167,4 +167,5 @@ Hot100类型题
 [除自身以外数组的乘积|product_except_self](./hot100/medium/product_except_self/src/lib.rs)  
 [分割等和子集|can_partition](./hot100/medium/can_partition/src/lib.rs)  
 [全排列|permute](./hot100/medium/permute/src/lib.rs)  
+[括号生成|generate_parenthesis](./hot100/medium/generate_parenthesis/src/lib.rs)  
 [零钱兑换|coin_change](./hot100/medium/coin_change/src/lib.rs)  

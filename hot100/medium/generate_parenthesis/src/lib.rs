@@ -2,28 +2,30 @@ struct Solution {}
 
 impl Solution {
   pub fn generate_parenthesis(n: i32) -> Vec<String> {
-    let mut v = vec![];
-    let mut i = 0;
-    while i < n {}
-    vec!["1".to_string()]
+    let mut res: Vec<String> = vec![]; // 存放结果
+    let mut path = String::from(""); // 存放当前路径, 第一个路径是固定的
+    back_trace(&mut res, &mut path, 0, 0, n);
+    println!("{:?}", res);
+    res
   }
 }
 
-fn check(v: &str) -> bool {
-  // 判断当前字符串是否符合要求
-  let mut stack = vec![];
-  let v = v.split("");
-  for i in v {
-    if i == "{" {
-      stack.push(i);
-    } else if i == "}" {
-      stack.pop();
-    }
+fn back_trace(res: &mut Vec<String>, path: &mut String, left: i32, right: i32, n: i32) {
+  if path.len() == 2 * n as usize {
+    // 递归结束
+    res.push(path.clone());
+    return;
   }
-  if stack.len() == 0 {
-    true
-  } else {
-    false
+  if left < n {
+    let mut path = path.clone();
+    path.push_str("(");
+    back_trace(res, &mut path, left + 1, right, n)
+  }
+  if left > 0 && left > right && right < n {
+    // 剪枝（左括号可以使用的个数严格大于右括号可以使用的个数，才剪枝
+    let mut path = path.clone();
+    path.push_str(")");
+    back_trace(res, &mut path, left, right + 1, n)
   }
 }
 
@@ -33,7 +35,6 @@ mod tests {
 
   #[test]
   fn tests() {
-    let res = check("{{}");
-    println!("{}", res);
+    Solution::generate_parenthesis(3);
   }
 }
