@@ -168,4 +168,5 @@ Hot100类型题
 [分割等和子集|can_partition](./hot100/medium/can_partition/src/lib.rs)  
 [全排列|permute](./hot100/medium/permute/src/lib.rs)  
 [括号生成|generate_parenthesis](./hot100/medium/generate_parenthesis/src/lib.rs)  
+[子集|subsets](./hot100/medium/subsets/src/lib.rs)  
 [零钱兑换|coin_change](./hot100/medium/coin_change/src/lib.rs)  
