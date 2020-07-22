@@ -159,6 +159,7 @@ Hot100类型题
 简单难度的HOT100题
 
 [柠檬水找零|lemonade_change](./hot100/easy/lemonade_change/src/lib.rs)  
+[找到所有数组中消失的数字|find_disappeared_numbers](./hot100/easy/find_disappeared_numbers/src/lib.rs)  
 
 #### Medium
 
