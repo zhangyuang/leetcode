@@ -173,3 +173,4 @@ Hot100类型题
 [子集|subsets](./hot100/medium/subsets/src/lib.rs)  
 [零钱兑换|coin_change](./hot100/medium/coin_change/src/lib.rs)  
 [不同路径|unique_paths](./hot100/medium/unique_paths/src/lib.rs)  
+[单词搜索|exist](./hot100/medium/exist/src/lib.rs)  
