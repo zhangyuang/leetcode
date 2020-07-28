@@ -18,6 +18,7 @@ impl Solution {
     let mut dp = vec![1; nums.len()];
     let mut path = vec![];
     let mut max_len = 0;
+    let mut max_len_index = 0;
     // dp[i]代表到i为止最长的递增子序列长度
     for i in 1..nums.len() {
       for j in 0..i {
@@ -25,7 +26,10 @@ impl Solution {
           dp[i] = max(dp[i], dp[j] + 1)
         }
       }
-      max_len = max(max_len, dp[i]);
+      if dp[i] > max_len {
+        max_len = dp[i];
+        max_len_index = i;
+      }
     }
     let mut item = vec![dp[0]];
     if max_len == 1 {
@@ -33,24 +37,36 @@ impl Solution {
     }
     println!("{:?}", dp);
 
-    Solution::find_path(&dp, &mut path, max_len as usize, &mut item);
+    find_path(
+      &dp,
+      &mut path,
+      max_len as usize,
+      max_len_index as usize,
+      &mut item,
+    );
     println!("{:?}", path);
     path.len() as i32
   }
-  fn find_path(dp: &Vec<i32>, path: &mut Vec<Vec<i32>>, max_len: usize, item: &mut Vec<i32>) {
-    if item.len() == max_len {
-      // 找4个数字的递增全排列
-      path.push(item.clone());
+}
+fn find_path(
+  dp: &Vec<i32>,
+  path: &mut Vec<Vec<i32>>,
+  max_len: usize,
+  max_len_index: usize,
+  item: &mut Vec<i32>,
+) {
+  if item.len() == max_len {
+    // 找4个数字的递增全排列
+    path.push(item.clone());
+  }
+  for i in max_len_index..0 {
+    if dp[i] <= item[item.len() - 1] {
+      continue;
     }
-    for i in 0..dp.len() {
-      if dp[i] <= item[item.len() - 1] {
-        continue;
-      }
-      // 如果dp数组当前的值大于item当前的最大值，则添加进去
-      item.push(dp[i]);
-      Solution::find_path(dp, path, max_len, item);
-      item.pop();
-    }
+    // 如果dp数组当前的值大于item当前的最大值，则添加进去
+    item.push(dp[i]);
+    find_path(dp, path, max_len, max_len_index, item);
+    item.pop();
   }
 }
 
