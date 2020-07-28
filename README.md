@@ -149,6 +149,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [打家劫舍|rob](./dynamic-programing/easy/rob/src/lib.rs)  
 [使用最小花费爬楼梯|min_cost_climbing_stairs](./dynamic-programing/easy/min_cost_climbing_stairs/src/lib.rs)  
 [买卖股票的最佳时机|max_profit](./dynamic-programing/easy/max_profit/src/lib.rs)  
+[最长连续递增序列|find_length_of_lcis](./dynamic-programing/easy/find_length_of_lcis/src/lib.rs)  
 
 ### HOT100🔥
 
