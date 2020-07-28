@@ -151,6 +151,12 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [买卖股票的最佳时机|max_profit](./dynamic-programing/easy/max_profit/src/lib.rs)  
 [最长连续递增序列|find_length_of_lcis](./dynamic-programing/easy/find_length_of_lcis/src/lib.rs)  
 
+#### Medium
+
+中等难度的动态规划题
+
+[最长上升子序列|length_of_lis](./dynamic-programing/medium/length_of_lis/src/lib.rs)  
+
 ### HOT100🔥
 
 Hot100类型题
