@@ -11,6 +11,7 @@ use std::cmp::max;
 // dp=[1,2,3,3,4]
 
 impl Solution {
+  // 动态规划+回溯倒推路径
   pub fn find_number_of_lis(nums: Vec<i32>) -> i32 {
     if nums.len() <= 1 {
       return nums.len() as i32;
@@ -18,7 +19,6 @@ impl Solution {
     let mut dp = vec![1; nums.len()];
     let mut path = vec![];
     let mut max_len = 0;
-    let mut max_len_index = 0;
     // dp[i]代表到i为止最长的递增子序列长度
     for i in 1..nums.len() {
       for j in 0..i {
@@ -26,29 +26,35 @@ impl Solution {
           dp[i] = max(dp[i], dp[j] + 1)
         }
       }
-      if dp[i] > max_len {
-        max_len = dp[i];
-        max_len_index = i;
-      }
+
+      max_len = max(dp[i], max_len);
     }
-    let mut item = vec![dp[0]];
     if max_len == 1 {
       return dp.len() as i32;
     }
-    println!("{:?}", dp);
-
-    find_path(
-      &dp,
-      &mut path,
-      max_len as usize,
-      max_len_index as usize,
-      &mut item,
-    );
-    println!("{:?}", path);
+    for i in 0..dp.len() {
+      // 兼容有多个元素都可以作为递增子序列结尾的情况
+      if dp[i] == max_len {
+        let max_len_index = i;
+        let mut item = vec![nums[max_len_index]]; // vec第一个元素为递增子序列的结尾元素
+        println!("{:?}", nums);
+        println!("{:?}", dp);
+        find_path(
+          &nums,
+          &dp,
+          &mut path,
+          max_len as usize,
+          max_len_index as usize,
+          &mut item,
+        );
+        println!("{:?}", path);
+      }
+    }
     path.len() as i32
   }
 }
 fn find_path(
+  nums: &Vec<i32>,
   dp: &Vec<i32>,
   path: &mut Vec<Vec<i32>>,
   max_len: usize,
@@ -56,16 +62,20 @@ fn find_path(
   item: &mut Vec<i32>,
 ) {
   if item.len() == max_len {
-    // 找4个数字的递增全排列
     path.push(item.clone());
   }
-  for i in max_len_index..0 {
-    if dp[i] <= item[item.len() - 1] {
+  // println!("{:?}", format!("{:?}{}", item, max_len_index));
+
+  for i in (0..max_len_index).rev() {
+    if dp[i] != dp[max_len_index] as i32 - 1 {
+      // 当max_len_index为5时，需要找到值4的元素
       continue;
     }
-    // 如果dp数组当前的值大于item当前的最大值，则添加进去
-    item.push(dp[i]);
-    find_path(dp, path, max_len, max_len_index, item);
+    if nums[i] >= item[item.len() - 1] {
+      continue;
+    }
+    item.push(nums[i]);
+    find_path(nums, dp, path, max_len, i, item);
     item.pop();
   }
 }
@@ -76,6 +86,6 @@ mod tests {
 
   #[test]
   fn tests() {
-    Solution::find_number_of_lis(vec![1, 3, 5, 4, 7]);
+    Solution::find_number_of_lis(vec![1, 3, 2]);
   }
 }
