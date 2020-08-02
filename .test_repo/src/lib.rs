@@ -1,51 +1,52 @@
 /*
- * @lc app=leetcode.cn id=5 lang=rust
+ * @lc app=leetcode.cn id=415 lang=rust
  *
- * [5] 最长回文子串
+ * [415] 字符串相加
  */
 struct Solution {}
 // @lc code=start
+use std::cmp::min;
+
 impl Solution {
-    pub fn longest_palindrome(s: String) -> String {
-        // 题解https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-dong-tai-gui-hua-by-liweiwei1419/
-        if s.len() == 0 {
-            return "".to_string();
-        }
-        if s.len() == 1 {
-            return s;
-        }
-        let mut res = &s[0..1];
-        let mut dp = vec![vec![false; s.len()]; s.len()];
-        for i in 0..s.len() {
-            dp[i][i] = true
-        }
-        for i in 1..s.len() {
-            for j in 0..i {
-                if &s[i..i + 1] != &s[j..j + 1] {
-                    dp[j][i] = false;
-                } else {
-                    if i - j < 3 {
-                        dp[j][i] = true;
-                    } else {
-                        dp[j][i] = dp[j + 1][i - 1]
-                    }
-                }
-                if dp[j][i] && i - j + 1 > res.len() {
-                    res = &s[j..=i]
-                }
+    pub fn add_strings(num1: String, num2: String) -> String {
+        let mut max_str = if num1.len() > num2.len() {
+            "num1"
+        } else {
+            "num2"
+        };
+        let min_len = min(num1.len(), num2.len());
+        let mut res = String::from("");
+        let mut sign = false;
+        for i in (0..min_len).rev() {
+            let num1_curr = &num1[i..i + 1];
+            let num2_curr = &num2[i..i + 1];
+            let mut foo = num1_curr.parse::<i32>().unwrap() + num2_curr.parse::<i32>().unwrap();
+            if sign == true {
+                foo += 1;
             }
+            if foo >= 10 {
+                sign = true;
+            } else {
+                sign = false;
+            }
+            res.push_str(if foo > 10 {
+                return foo.to_string()[1..2].to_string();
+            } else {
+                return foo.to_string();
+            });
         }
-        println!("{:?}", res);
+        println!("{}", res);
         res.to_string()
     }
 }
 // @lc code=end
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn tests() {
-        Solution::longest_palindrome("lcnvoknqgejxbfhijmxglisfzjwbtvhodwummdqeggzfczmetrdnoetmcydwddmtubcqmdjwnpzdqcdhplxtezctvgnpobnnscrmeqkwgiedhzsvskrxwfyklynkplbgefjbyhlgmkkfpwngdkvwmbdskvagkcfsidrdgwgmnqjtdbtltzwxaokrvbxqqqhljszmefsyewwggylpugmdmemvcnlugipqdjnriythsanfdxpvbatsnatmlusspqizgknabhnqayeuzflkuysqyhfxojhfponsndytvjpbzlbfzjhmwoxcbwvhnvnzwmkhjxvuszgtqhctbqsxnasnhrusodeqmzrlcsrafghbqjpyklaaqximcjmpsxpzbyxqvpexytrhwhmrkuybtvqhwxdqhsnbecpfiudaqpzsvfaywvkhargputojdxonvlprzwvrjlmvqmrlftzbytqdusgeupuofhgonqoyffhmartpcbgybshllnjaapaixdbbljvjomdrrgfeqhwffcknmcqbhvulwiwmsxntropqzefwboozphjectnudtvzzlcmeruszqxvjgikcpfclnrayokxsqxpicfkvaerljmxchwcmxhtbwitsexfqowsflgzzeynuzhtzdaixhjtnielbablmckqzcccalpuyahwowqpcskjencokprybrpmpdnswslpunohafvminfolekdleusuaeiatdqsoatputmymqvxjqpikumgmxaxidlrlfmrhpkzmnxjtvdnopcgsiedvtfkltvplfcfflmwyqffktsmpezbxlnjegdlrcubwqvhxdammpkwkycrqtegepyxtohspeasrdtinjhbesilsvffnzznltsspjwuogdyzvanalohmzrywdwqqcukjceothydlgtocukc".to_string());
+        Solution::add_strings("15".to_string(), "26".to_string());
     }
 }
