@@ -161,6 +161,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [最长上升子序列|length_of_lis](./dynamic-programing/medium/length_of_lis/src/lib.rs)  
 [最长递增子序列的个数|find_number_of_lis](./dynamic-programing/medium/find_number_of_lis/src/lib.rs)  
 [最小路径和|min_path_sum](./dynamic-programing/medium/min_path_sum/src/lib.rs)  
+[最长回文子串|longest_palindrome](./dynamic-programing/medium/longest_palindrome/src/lib.rs)  
 
 ### HOT100🔥
 
