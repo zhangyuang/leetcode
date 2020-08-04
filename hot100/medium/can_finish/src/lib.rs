@@ -15,10 +15,8 @@ impl Solution {
             if hash_map.get(&i[0]).is_none() {
                 hash_map.insert(i[0], vec![i[1]]);
             } else {
-                let val = hash_map.get(&i[0]).unwrap();
-                let mut foo = val.clone();
-                foo.push(i[1]);
-                hash_map.insert(i[0], foo);
+                let val = hash_map.get_mut(&i[0]).unwrap();
+                val.push(i[1]);
             }
         }
         let mut res = true;
