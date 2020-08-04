@@ -190,6 +190,7 @@ Hot100类型题
 [单词搜索|exist](./hot100/medium/exist/src/lib.rs)  
 [单词拆分|word_break](./hot100/medium/word_break/src/lib.rs)  
 [无重复字符的最长子串|length_of_longest_substring](./hot100/medium/length_of_longest_substring/src/lib.rs)  
+[课程表|can_finish](./hot100/medium/can_finish/src/lib.rs)  
 
 #### Hard
 
