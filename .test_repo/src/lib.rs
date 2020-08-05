@@ -1,63 +1,65 @@
 /*
- * @lc app=leetcode.cn id=337 lang=rust
+ * @lc app=leetcode.cn id=336 lang=rust
  *
- * [337] 打家劫舍 III
+ * [336] 回文对
  */
 struct Solution {}
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
-}
 // @lc code=start
-// Definition for a binary tree node.
-// #[derive(Debug, PartialEq, Eq)]
-// pub struct TreeNode {
-//   pub val: i32,
-//   pub left: Option<Rc<RefCell<TreeNode>>>,
-//   pub right: Option<Rc<RefCell<TreeNode>>>,
-// }
-//
-// impl TreeNode {
-//   #[inline]
-//   pub fn new(val: i32) -> Self {
-//     TreeNode {
-//       val,
-//       left: None,
-//       right: None
-//     }
-//   }
-// }
-use std::cell::RefCell;
-use std::cmp::max;
-use std::rc::Rc;
 impl Solution {
-    pub fn rob(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        let (robed, noRobed) = check(root);
-        return max(robed, noRobed);
+    pub fn palindrome_pairs(words: Vec<String>) -> Vec<Vec<i32>> {
+        let mut res = vec![];
+        for i in 0..words.len() {
+            for j in i + 1..words.len() {
+                if words[i].len() == 0
+                    || words[j].len() == 0
+                    || &words[i][0..1] == &words[j][words[j].len() - 1..words[j].len()]
+                {
+                    let mut source = words[i].clone();
+                    source.push_str(&words[j]);
+                    let source_rev = rev(&source);
+                    if source == source_rev {
+                        res.push(vec![i as i32, j as i32])
+                    }
+                }
+                if words[i].len() == 0
+                    || words[j].len() == 0
+                    || &words[j][0..1] == &words[i][words[i].len() - 1..words[i].len()]
+                {
+                    let mut source = words[j].clone();
+                    source.push_str(&words[i]);
+                    let source_rev = rev(&source);
+                    if source == source_rev {
+                        res.push(vec![j as i32, i as i32])
+                    }
+                }
+            }
+        }
+        println!("{:?}", res);
+        res
     }
 }
-fn check(root: Option<Rc<RefCell<TreeNode>>>) -> (i32, i32) {
-    if root.is_none() {
-        return (0, 0);
-    }
-    let l = check(root.as_ref().unwrap().borrow_mut().left.take());
-    let r = check(root.as_ref().unwrap().borrow_mut().right.take());
+fn rev(source: &String) -> String {
+    source.chars().rev().collect::<String>()
+}
 
-    let robed = root.as_ref().unwrap().borrow().val + l.1 + r.1;
-    let noRobed = max(l.1, l.0) + max(r.0, r.1);
-    (robed, noRobed)
-}
 // @lc code=end
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tests() {
+        Solution::palindrome_pairs(vec![
+            "bb".to_string(),
+            "bababab".to_string(),
+            "baab".to_string(),
+            "abaabaa".to_string(),
+            "aaba".to_string(),
+            "".to_string(),
+            "bbaa".to_string(),
+            "aba".to_string(),
+            "baa".to_string(),
+            "b".to_string(),
+        ]);
+    }
+}
