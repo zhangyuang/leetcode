@@ -17,16 +17,18 @@ impl TreeNode {
   }
 }
 
+struct Solution {}
 use std::cell::RefCell;
 use std::rc::Rc;
 
-pub fn is_same_tree(
-  mut p: Option<Rc<RefCell<TreeNode>>>,
-  mut q: Option<Rc<RefCell<TreeNode>>>,
-) -> bool {
-  check(p, q)
+impl Solution {
+  pub fn is_same_tree(
+    mut p: Option<Rc<RefCell<TreeNode>>>,
+    mut q: Option<Rc<RefCell<TreeNode>>>,
+  ) -> bool {
+    check(p, q)
+  }
 }
-
 fn check(mut p: Option<Rc<RefCell<TreeNode>>>, mut q: Option<Rc<RefCell<TreeNode>>>) -> bool {
   if p.is_none() && q.is_none() {
     return true;
@@ -34,11 +36,17 @@ fn check(mut p: Option<Rc<RefCell<TreeNode>>>, mut q: Option<Rc<RefCell<TreeNode
   if p.is_none() || q.is_none() {
     return false;
   }
-  let p_left = p.as_mut().unwrap().borrow_mut().left.take();
-  let p_right = p.as_mut().unwrap().borrow_mut().right.take();
-  let q_left = q.as_mut().unwrap().borrow_mut().left.take();
-  let q_right = q.as_mut().unwrap().borrow_mut().right.take();
-  return p.as_ref().unwrap().borrow().val == q.as_ref().unwrap().borrow().val
-    && check(p_left, q_left)
-    && check(q_right, p_right);
+
+  if let Some(p_node) = &p {
+    let p_left = p_node.borrow_mut().left.take();
+    let p_right = p_node.borrow_mut().right.take();
+    if let Some(q_node) = &q {
+      let q_left = q_node.borrow_mut().left.take();
+      let q_right = q_node.borrow_mut().right.take();
+      return p.as_ref().unwrap().borrow().val == q.as_ref().unwrap().borrow().val
+        && check(p_left, q_left)
+        && check(q_right, p_right);
+    }
+  }
+  false
 }
