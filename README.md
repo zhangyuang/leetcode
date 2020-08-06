@@ -200,3 +200,11 @@ Hot100类型题
 困难难度的Hot100题目
 
 [接雨水|trap](./hot100/hard/trap/src/lib.rs)  
+
+### Others
+
+其他分类的题目集合
+
+#### Easy
+
+[剑指 Offer 21. 调整数组顺序使奇数位于偶数前面|exchange](./others/easy/exchange/src/lib.rs)  
