@@ -208,3 +208,12 @@ Hot100类型题
 #### Easy
 
 [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面|exchange](./others/easy/exchange/src/lib.rs)  
+
+### 周赛
+
+记录周赛题目
+
+#### 2020.8.9 双周赛
+
+[第 k 个缺失的正整数|find_kth_positive](./weekly-test/2020-08-09/find_kth_positive/src/lib.rs)  
+[K 次操作转变字符串|can_convert_string](./weekly-test/2020-08-09/can_convert_string/src/lib.rs)  
