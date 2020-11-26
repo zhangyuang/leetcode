@@ -3,10 +3,9 @@
  *
  * [213] 打家劫舍 II
  */
-
+struct Solution {}
 // @lc code=start
 use std::cmp::max;
-
 impl Solution {
     pub fn rob(nums: Vec<i32>) -> i32 {
         if nums.len() == 0 {
@@ -15,35 +14,35 @@ impl Solution {
         if nums.len() == 1 {
             return nums[0];
         }
-        if nums.len() == 2 {
-            return max(nums[0], nums[1]);
+        // 思路： 只需单独处理第一个和最后一个房屋，中间的房屋仍然和打家劫舍1一样处理
+        return max(
+            Self::rob1(nums[0..=nums.len() - 2].to_vec()), // 抢第一个，则不能抢最后一个
+            Self::rob1(nums[1..=nums.len() - 1].to_vec()), // 不抢第一个，则可以抢最后一个
+        );
+    }
+    fn rob1(nums: Vec<i32>) -> i32 {
+        // 处理中间的房子，相当于直线排列的房子
+        if nums.len() == 1 {
+            return nums[0];
         }
-        let len = nums.len();
-        let mut res1 = nums[0]; // 抢第一个的情况，最后一个无法抢，终止条件到n-1
-        let mut dp1: Vec<Vec<i32>> = vec![vec![0, nums[0]]; len]; // 设定length定义dp二维数组
-        dp1[1] = vec![nums[0], nums[0]];
-        for i in 2..len - 1 {
-            if dp1.get(i).is_none() {
-                dp1[i] = vec![0, 0]
-            }
-            dp1[i][0] = max(dp1[i - 1][0], dp1[i - 1][1]); // dp1[i][0] 第i个不抢的最长时间
-            dp1[i][1] = dp1[i - 1][0] + nums[i]; // dp1[i][1] 表示第i个抢的最长时间
-            res1 = max(max(res1, dp1[i][0]), dp1[i][1])
+        // dp 定义为最后一个房间可获得的最大金额
+        let mut dp = vec![0; nums.len()];
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+        for i in 2..nums.len() {
+            dp[i] = max(dp[i - 2] + nums[i], dp[i - 1])
         }
-        let mut res2 = 0; // 不抢第一个，则可以抢最后一个
-        let mut dp2: Vec<Vec<i32>> = vec![vec![0, 0]; len]; // 设定length定义dp二维数组
-        dp2[1] = vec![0, nums[1]];
-        for i in 2..len {
-            if dp2.get(i).is_none() {
-                dp2[i] = vec![0, 0]
-            }
-            dp2[i][0] = max(dp2[i - 1][0], dp2[i - 1][1]); // dp2[i][0] 第i个不抢的最长时间
-            println!("{}{}", dp2[i - 1][0], dp2[i - 1][1]);
-
-            dp2[i][1] = dp2[i - 1][0] + nums[i]; // dp2[i][1] 表示第i个抢的最长时间
-            res2 = max(max(res2, dp2[i][0]), dp2[i][1])
-        }
-        max(res1, res2)
+        return dp[nums.len() - 1];
     }
 }
 // @lc code=end
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tests() {
+        println!("{:?}", Solution::rob(vec![1, 2]))
+    }
+}

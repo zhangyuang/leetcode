@@ -1,88 +1,48 @@
 /*
- * @lc app=leetcode.cn id=687 lang=rust
+ * @lc app=leetcode.cn id=213 lang=rust
  *
- * [687] 最长同值路径
+ * [213] 打家劫舍 II
  */
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
-}
 struct Solution {}
 // @lc code=start
-// Definition for a binary tree node.
-// #[derive(Debug, PartialEq, Eq)]
-// pub struct TreeNode {
-//   pub val: i32,
-//   pub left: Option<Rc<RefCell<TreeNode>>>,
-//   pub right: Option<Rc<RefCell<TreeNode>>>,
-// }
-//
-// impl TreeNode {
-//   #[inline]
-//   pub fn new(val: i32) -> Self {
-//     TreeNode {
-//       val,
-//       left: None,
-//       right: None
-//     }
-//   }
-// }
-use std::cell::RefCell;
 use std::cmp::max;
-use std::rc::Rc;
-
 impl Solution {
-    pub fn longest_univalue_path(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        if root.is_none() {
+    pub fn rob(nums: Vec<i32>) -> i32 {
+        if nums.len() == 0 {
             return 0;
         }
-        let res = find(&root, 0);
-        res
-    }
-}
-fn find(root: &Option<Rc<RefCell<TreeNode>>>, val: i32) -> i32 {
-    if root.is_none() {
-        return val;
-    }
-    if let Some(root_unwrap) = root {
-        let left = &root_unwrap.borrow().left;
-        let right = &root_unwrap.borrow().right;
-        let mut left_val = 0;
-        let mut right_val = 0;
-        if left.is_some()
-            && left.as_ref().unwrap().borrow().val == root_unwrap.borrow().val
-            && right.is_some()
-            && right.as_ref().unwrap().borrow().val == root_unwrap.borrow().val
-        {
-            left_val = find(left, right_val + 1);
-            right_val = find(right, left_val + 1);
-            return max(val, max(left_val, right_val));
+        if nums.len() == 1 {
+            return nums[0];
         }
-        if left.is_some() && left.as_ref().unwrap().borrow().val == root_unwrap.borrow().val {
-            left_val = find(left, val + 1);
-        } else {
-            left_val = find(left, 0)
-        }
-        if right.is_some() && right.as_ref().unwrap().borrow().val == root_unwrap.borrow().val {
-            right_val = find(right, val + 1);
-        } else {
-            right_val = find(right, 0)
-        }
-        return max(val, max(left_val, right_val));
+        // 思路： 只需单独处理第一个和最后一个房屋，中间的房屋仍然和打家劫舍1一样处理
+        return max(
+            Self::rob1(nums[0..=nums.len() - 2].to_vec()), // 抢第一个，则不能抢最后一个
+            Self::rob1(nums[1..=nums.len() - 1].to_vec()), // 不抢第一个，则可以抢最后一个
+        );
     }
-    val
+    fn rob1(nums: Vec<i32>) -> i32 {
+        // 处理中间的房子，相当于直线排列的房子
+        if nums.len() == 1 {
+            return nums[0];
+        }
+        // dp 定义为最后一个房间可获得的最大金额
+        let mut dp = vec![0; nums.len()];
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+        for i in 2..nums.len() {
+            dp[i] = max(dp[i - 2] + nums[i], dp[i - 1])
+        }
+        return dp[nums.len() - 1];
+    }
 }
 // @lc code=end
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tests() {
+        println!("{:?}", Solution::rob(vec![1, 2]))
+    }
+}
