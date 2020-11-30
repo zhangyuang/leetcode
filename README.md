@@ -127,6 +127,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [二叉树展开为链表|flatten](./tree/medium/flatten/src/lib.rs)  
 [不同的二叉搜索树|num_trees](./tree/medium/num_trees/src/lib.rs)  
 [验证二叉搜索树|is_valid_bst](./tree/medium/is_valid_bst/src/lib.rs)  
+[二叉树的锯齿形层次遍历|zigzag_level_order](./tree/medium/zigzag_level_order/src/lib.rs)  
 
 #### Hard
 
