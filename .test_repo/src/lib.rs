@@ -27,13 +27,13 @@ impl Solution {
             return pivot_index as i32;
         }
         if nums[pivot_index] < target {
-            return Self::binary_search(nums, target, left + 1, right);
+            return Self::binary_search(nums, target, pivot_index + 1, right);
         } else {
-            if right == 0 {
+            if right == 0 || pivot_index == 0 {
                 // 防止 usize 溢出
                 return -1;
             }
-            return Self::binary_search(nums, target, left, right - 1);
+            return Self::binary_search(nums, target, left, pivot_index - 1);
         }
     }
 }
