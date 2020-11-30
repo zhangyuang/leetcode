@@ -1,89 +1,51 @@
 /*
- * @lc app=leetcode.cn id=103 lang=rust
+ * @lc app=leetcode.cn id=704 lang=rust
  *
- * [103] 二叉树的锯齿形层次遍历
+ * [704] 二分查找
  */
 struct Solution {}
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
-}
 // @lc code=start
-// Definition for a binary tree node.
-// #[derive(Debug, PartialEq, Eq)]
-// pub struct TreeNode {
-//   pub val: i32,
-//   pub left: Option<Rc<RefCell<TreeNode>>>,
-//   pub right: Option<Rc<RefCell<TreeNode>>>,
-// }
-//
-// impl TreeNode {
-//   #[inline]
-//   pub fn new(val: i32) -> Self {
-//     TreeNode {
-//       val,
-//       left: None,
-//       right: None
-//     }
-//   }
-// }
-use std::cell::RefCell;
-use std::collections::VecDeque;
-use std::rc::Rc;
-
 impl Solution {
-    pub fn zigzag_level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
-        let mut v = vec![];
-        if root.is_none() {
-            return v;
-        }
-        let mut queue = VecDeque::new();
-        queue.push_front(root);
-        let mut from_left = false;
-        while queue.len() != 0 {
-            let mut node_vec = vec![]; // 暂时保存当前行的所有元素
-            let mut val_vec = vec![];
-            while queue.len() != 0 {
-                let node = queue.pop_front().unwrap().unwrap();
-                val_vec.push(node.borrow().val); // 记录当前行的所有元素的val
-                node_vec.push(node);
+    pub fn search(nums: Vec<i32>, target: i32) -> i32 {
+        if nums.len() == 1 {
+            if nums[0] == target {
+                return 0;
+            } else {
+                return -1;
             }
-            v.push(val_vec);
-            while node_vec.len() != 0 {
-                let node = node_vec.pop().unwrap();
-                // 把当前行所有元素的下一行元素入队
-                if from_left {
-                    if !node.borrow().left.is_none() {
-                        queue.push_back(node.borrow_mut().left.take());
-                    }
-                    if !node.borrow().right.is_none() {
-                        queue.push_back(node.borrow_mut().right.take());
-                    }
-                } else {
-                    if !node.borrow().right.is_none() {
-                        queue.push_back(node.borrow_mut().right.take());
-                    }
-                    if !node.borrow().left.is_none() {
-                        queue.push_back(node.borrow_mut().left.take());
-                    }
-                }
-            }
-            from_left = !from_left;
         }
-        v
+        let left = 0;
+        let right = nums.len() - 1;
+        return Self::binary_search(nums, target, left, right);
+    }
+    fn binary_search(nums: Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
+        if right < left {
+            return -1;
+        }
+        let pivot_index = (right + left) / 2;
+        if nums[pivot_index] == target {
+            return pivot_index as i32;
+        }
+        if nums[pivot_index] < target {
+            return Self::binary_search(nums, target, left + 1, right);
+        } else {
+            if right == 0 {
+                // 防止 usize 溢出
+                return -1;
+            }
+            return Self::binary_search(nums, target, left, right - 1);
+        }
     }
 }
 // @lc code=end
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tests() {
+        let nums: Vec<i32> = vec![2, 5];
+        println!("{:?}", Solution::search(nums, 0));
+    }
+}
