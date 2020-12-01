@@ -29,7 +29,7 @@ impl Solution {
         if nums[pivot_index] < target {
             return Self::binary_search(nums, target, pivot_index + 1, right);
         } else {
-            if right == 0 || pivot_index == 0 {
+            if pivot_index == 0 {
                 // 防止 usize 溢出
                 return -1;
             }

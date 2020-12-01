@@ -180,6 +180,7 @@ Hot100类型题
 [最短无序连续子数组|find_unsorted_subarray](./hot100/easy/find_unsorted_subarray/src/lib.rs)  
 [字符串相加|add_strings](./hot100/easy/add_strings/src/lib.rs)  
 [二分查找|binary_search](./hot100/easy/binary_search/src/lib.rs)  
+[第一个错误的版本|first_bad_version](./hot100/easy/first_bad_version/src/lib.rs)  
 
 #### Medium
 
