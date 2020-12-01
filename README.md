@@ -197,6 +197,7 @@ Hot100类型题
 [单词拆分|word_break](./hot100/medium/word_break/src/lib.rs)  
 [无重复字符的最长子串|length_of_longest_substring](./hot100/medium/length_of_longest_substring/src/lib.rs)  
 [课程表|can_finish](./hot100/medium/can_finish/src/lib.rs)  
+[在排序数组中查找元素的第一个和最后一个位置|search_range](./hot100/medium/search_range/src/lib.rs)  
 
 #### Hard
 
