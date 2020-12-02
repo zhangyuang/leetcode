@@ -212,6 +212,7 @@ Hot100类型题
 #### Easy
 
 [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面|exchange](./others/easy/exchange/src/lib.rs)  
+[用栈实现队列|MyQueue](./others/easy/MyQueue/src/lib.rs)  
 
 ### 周赛
 

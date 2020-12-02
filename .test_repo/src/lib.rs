@@ -1,90 +1,86 @@
 /*
- * @lc app=leetcode.cn id=34 lang=rust
+ * @lc app=leetcode.cn id=232 lang=rust
  *
- * [34] 在排序数组中查找元素的第一个和最后一个位置
+ * [232] 用栈实现队列
  */
-struct Solution {}
+
 // @lc code=start
-impl Solution {
-    pub fn search_range(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        if nums.len() == 1 {
-            if nums[0] == target {
-                return vec![0, 0];
-            } else {
-                return vec![-1, -1];
+struct MyQueue {
+    stack1: Vec<i32>,
+    stack2: Vec<i32>,
+    len: i32,
+}
+
+/**
+ * `&self` means the method takes an immutable reference.
+ * If you need a mutable reference, change it to `&mut self` instead.
+ */
+impl MyQueue {
+    /** Initialize your data structure here. */
+    fn new() -> Self {
+        return MyQueue {
+            stack1: vec![],
+            stack2: vec![],
+            len: 0,
+        };
+    }
+    /** Push element x to the back of queue. */
+    fn push(&mut self, x: i32) {
+        self.stack1.push(x);
+        self.len = self.len + 1;
+    }
+    /** Removes the element from in front of queue and returns that element. */
+    fn pop(&mut self) -> i32 {
+        self.len = self.len - 1;
+        if self.stack2.len() == 0 {
+            while self.stack1.len() != 0 {
+                let element = self.stack1.pop().unwrap();
+                self.stack2.push(element);
             }
         }
-        if nums.len() == 0 {
-            return vec![-1, -1];
-        }
-        let left = Self::binary_search_left(&nums, target, 0, nums.len() - 1);
-        let right = Self::binary_search_right(&nums, target, 0, nums.len() - 1);
-        vec![
-            if left >= 0 && left < nums.len() as i32 && nums[left as usize] == target {
-                left
-            } else {
-                -1
-            },
-            if right >= 0 && left < nums.len() as i32 && nums[right as usize] == target {
-                right
-            } else {
-                -1
-            },
-        ]
+        return self.stack2.pop().unwrap();
     }
 
-    fn binary_search_left(nums: &Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
-        if right < left {
-            return left as i32;
-        }
-        let pivot_index = (right + left) / 2;
-        if nums[pivot_index] == target {
-            if pivot_index == 0 {
-                return pivot_index as i32;
-            }
-            return Self::binary_search_left(nums, target, left, pivot_index - 1);
-        }
-        if nums[pivot_index] < target {
-            return Self::binary_search_left(nums, target, pivot_index + 1, right);
+    /** Get the front element. */
+    fn peek(&mut self) -> i32 {
+        if self.stack1.len() == 0 {
+            return self.stack2[self.stack2.len() - 1];
         } else {
-            if pivot_index == 0 {
-                // 防止 usize 溢出
-                return -1;
-            }
-            return Self::binary_search_left(nums, target, left, pivot_index - 1);
+            return self.stack1[0];
         }
     }
-    fn binary_search_right(nums: &Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
-        if right < left {
-            return right as i32;
-        }
-        let pivot_index = (right + left) / 2;
-        if nums[pivot_index] == target {
-            return Self::binary_search_right(nums, target, pivot_index + 1, right);
-        }
-        if nums[pivot_index] < target {
-            return Self::binary_search_right(nums, target, pivot_index + 1, right);
-        } else {
-            if pivot_index == 0 {
-                if nums[pivot_index] as i32 == target {
-                    return pivot_index as i32;
-                } else {
-                    return -1;
-                }
-            }
-            return Self::binary_search_right(nums, target, left, pivot_index - 1);
-        }
+
+    /** Returns whether the queue is empty. */
+    fn empty(&self) -> bool {
+        self.len == 0
     }
 }
-// @lc code=end
 
+// /**
+//  * Your MyQueue object will be instantiated and called as such:
+//  * let obj = MyQueue::new();
+//  * obj.push(x);
+//  * let ret_2: i32 = obj.pop();
+//  * let ret_3: i32 = obj.peek();
+//  * let ret_4: bool = obj.empty();
+//  */
+// @lc code=end
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn tests() {
-        let nums: Vec<i32> = vec![2, 2];
-        println!("{:?}", Solution::search_range(nums, 2));
+        let mut queue = MyQueue::new();
+        queue.push(1);
+        queue.push(2);
+        queue.push(3);
+        queue.push(4);
+        println!("{:?}", queue.pop());
+        queue.push(5);
+        println!("{:?}", queue.pop());
+        println!("{:?}", queue.pop());
+        println!("{:?}", queue.pop());
+        println!("{:?}", queue.pop());
     }
 }
