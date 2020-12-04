@@ -215,6 +215,10 @@ Hot100类型题
 [用栈实现队列|MyQueue](./others/easy/MyQueue/src/lib.rs)  
 [用队列实现栈|MyStack](./others/easy/MyStack/src/lib.rs)  
 
+#### Hard
+
+[缺失的第一个正数|first_missing_positive](./others/hard/first_missing_positive/src/lib.rs)  
+
 ### 周赛
 
 记录周赛题目
