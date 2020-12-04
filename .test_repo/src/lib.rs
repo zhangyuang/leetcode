@@ -12,13 +12,6 @@ impl Solution {
         if nums.len() == 0 {
             return 1;
         }
-        if nums.len() == 1 {
-            if nums[0] != 1 {
-                return 1;
-            } else if nums[0] == 1 {
-                return 2;
-            };
-        }
         let mut v: Vec<i32> = vec![-1; nums.len()];
         let mut MAX = 0;
         for i in nums {
@@ -32,11 +25,11 @@ impl Solution {
                 return i as i32;
             }
         }
-        if v.len() >= MAX as usize {
-            return MAX + 1;
+        return if v.len() >= MAX as usize {
+            MAX + 1
         } else {
-            return v.len() as i32;
-        }
+            v.len() as i32
+        };
     }
 }
 // @lc code=end
@@ -46,7 +39,7 @@ mod tests {
 
     #[test]
     fn tests() {
-        let nums: Vec<i32> = vec![2, 1];
+        let nums: Vec<i32> = vec![2];
         println!("{:?}", Solution::first_missing_positive(nums));
     }
 }
