@@ -1,42 +1,37 @@
 /*
- * @lc app=leetcode.cn id=1441 lang=rust
+ * @lc app=leetcode.cn id=392 lang=rust
  *
- * [1441] 用栈操作构建数组
+ * [392] 判断子序列
  */
+
 struct Solution {}
 // @lc code=start
 impl Solution {
-    // pub fn build_array(target: Vec<i32>, n: i32) -> Vec<String> {
-    //     let mut v = vec![];
-    //     if n == 0 {
-    //         return v;
-    //     }
-    //     for i in 1..=n {
-    //         if target[target.len() - 1] == target.len() as i32 && target[target.len() - 1] < i {
-    //             break;
-    //         }
-    //         let index = target.iter().position(|&r| r == i);
-    //         if index.is_none() {
-    //             v.push("Push".to_string());
-    //             v.push("Pop".to_string())
-    //         } else {
-    //             v.push("Push".to_string());
-    //         }
-    //     }
-    //     v
-    // }
-    pub fn build_array(target: Vec<i32>, n: i32) -> Vec<String> {
-        let mut v = vec![];
-        for i in 1..=target[target.len() - 1] {
-            let index = target.iter().position(|&r| r == i);
-            if index.is_none() {
-                v.push("Push".to_string());
-                v.push("Pop".to_string())
+    pub fn is_subsequence(s: String, t: String) -> bool {
+        let mut _t = t.clone();
+        for i in s.chars() {
+            let index = _t.find(i);
+            if index.is_some() {
+                let index_val = index.unwrap();
+                let len = _t.chars().count();
+                _t = _t[index_val + 1..len].to_string();
             } else {
-                v.push("Push".to_string());
+                return false;
             }
         }
-        v
+        true
     }
 }
 // @lc code=end
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tests() {
+        println!(
+            "{:?}",
+            Solution::is_subsequence("aaaaa".to_string(), "baaa".to_string())
+        )
+    }
+}
