@@ -46,14 +46,20 @@ let mut root = &mut head;
 while let Some(node) = root {
   let next_node = &mut node.next;
   // 使用as_mut获取next_node的引用，使用&mut获取.next的引用。以此来获取root下一个节点的下一个节点的引用。直接使用unwrap会导致所有权的move
-  let next_node_next = &mut next_node.as_mut().unwrap().next
+  let next_node_next = &mut next_node.as_mut()?.next
   // 这里面不能再直接使用head，因为head的所有权已经借给了root，在循环体中未归还
   // other code...
   root = &mut node.next;
 }
 
 ```
+写法二
 
+```rust
+while head.as_mut()?.next.is_some() {
+    head = &mut head.as_mut()?.next;
+}
+```
 ##### 转移获取链表节点所有权
 
 - take 方法使用方式见[文档](https://doc.rust-lang.org/std/option/enum.Option.html#method.take)
@@ -87,6 +93,7 @@ let next_node = node.next.take();
 [两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)  
 [两两交换链表中的节点|swap_pairs](./linkList/medium/swap_pairs/src/lib.rs)  
 [删除链表的倒数第 N 个节点|remove_nth_from_end](./linkList/medium/remove_nth_from_end/src/lib.rs)
+[合并两个链表|merge_in_between](./linkList/medium/merge_in_between/src/lib.rs)
 
 ### Tree
 
