@@ -93,7 +93,8 @@ let next_node = node.next.take();
 [两数相加|add_two_numbers](./linkList/medium/add_two_numbers/src/lib.rs)  
 [两两交换链表中的节点|swap_pairs](./linkList/medium/swap_pairs/src/lib.rs)  
 [删除链表的倒数第 N 个节点|remove_nth_from_end](./linkList/medium/remove_nth_from_end/src/lib.rs)
-[合并两个链表|merge_in_between](./linkList/medium/merge_in_between/src/lib.rs)
+[合并两个链表|merge_in_between](./linkList/medium/merge_in_between/src/lib.rs)  
+[旋转链表|rotate_right](./linkList/medium/rotate_right/src/lib.rs)
 
 ### Tree
 

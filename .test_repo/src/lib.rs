@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=19 lang=rust
+ * @lc app=leetcode.cn id=61 lang=rust
  *
- * [19] 删除链表的倒数第N个节点
+ * [61] 旋转链表
  */
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
@@ -35,42 +35,36 @@ struct Solution {}
 //   }
 // }
 impl Solution {
-    pub fn remove_nth_from_end(mut head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
+    pub fn rotate_right(mut head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
+        // rust 链表无法成环，拆成两个链表再连接
         if head.is_none() {
             return head;
         }
-        let mut slow = &head;
-        let mut fast = &head;
-        let mut i = 1;
-        while i < n {
-            // 快指针先走n步
-            fast = &fast.as_ref()?.next;
-            i += 1;
+        let mut len = 0;
+        let mut head_refer = &head;
+        while head_refer.as_ref().is_some() {
+            // 记录链表长度
+            len += 1;
+            head_refer = &head_refer.as_ref()?.next;
         }
-        while fast.as_ref()?.next.is_some() {
-            fast = &fast.as_ref()?.next;
-            slow = &slow.as_ref()?.next;
+        let offset = k % len;
+        if offset == 0 {
+            return head;
         }
-        // 这里必须clone一下因为head已经borrow了，没办法再move
-        head = delete_node(head.clone(), slow);
-        head
+        let mut head_mut_refer = &mut head;
+        while len - offset != 1 {
+            len -= 1;
+            head_mut_refer = &mut head_mut_refer.as_mut()?.next;
+        }
+        // right = 4->5  head = 1->2->3
+        let mut right = head_mut_refer.as_mut()?.next.take();
+        let mut right_mut_refer = &mut right;
+        while right_mut_refer.as_ref()?.next.is_some() {
+            // 找到 right 的尾部
+            right_mut_refer = &mut right_mut_refer.as_mut()?.next;
+        }
+        right_mut_refer.as_mut()?.next = head;
+        right
     }
-}
-
-fn delete_node(
-    mut head: Option<Box<ListNode>>,
-    target: &Option<Box<ListNode>>,
-) -> Option<Box<ListNode>> {
-    let mut phead = Some(Box::new(ListNode { val: 1, next: head }));
-    let mut root = &mut phead;
-    while root.as_mut()?.next.is_some() {
-        if &root.as_mut()?.next == target {
-            let target_next = &target.as_ref()?.next;
-            root.as_mut()?.next = target_next.clone();
-            break;
-        }
-        root = &mut root.as_mut()?.next;
-    }
-    phead?.next
 }
 // @lc code=end

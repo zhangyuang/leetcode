@@ -58,7 +58,7 @@ impl Solution {
 }
 
 fn delete_node(
-  mut head: Option<Box<ListNode>>,
+  head: Option<Box<ListNode>>,
   target: &Option<Box<ListNode>>,
 ) -> Option<Box<ListNode>> {
   let mut phead = Some(Box::new(ListNode { val: 1, next: head }));
