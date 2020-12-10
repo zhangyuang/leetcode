@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=61 lang=rust
+ * @lc app=leetcode.cn id=1171 lang=rust
  *
- * [61] 旋转链表
+ * [1171] 从链表中删去总和值为零的连续节点
  */
 
 // @lc code=start
@@ -11,7 +11,7 @@
 //   pub val: i32,
 //   pub next: Option<Box<ListNode>>
 // }
-//
+// 
 // impl ListNode {
 //   #[inline]
 //   fn new(val: i32) -> Self {
@@ -22,7 +22,7 @@
 //   }
 // }
 impl Solution {
-    pub fn rotate_right(head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
+    pub fn remove_zero_sum_sublists(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 
     }
 }
