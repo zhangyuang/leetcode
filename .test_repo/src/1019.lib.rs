@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=1171 lang=rust
+ * @lc app=leetcode.cn id=1019 lang=rust
  *
- * [1171] 从链表中删去总和值为零的连续节点
+ * [1019] 链表中的下一个更大节点
  */
 
 // @lc code=start
@@ -11,7 +11,7 @@
 //   pub val: i32,
 //   pub next: Option<Box<ListNode>>
 // }
-// 
+//
 // impl ListNode {
 //   #[inline]
 //   fn new(val: i32) -> Self {
@@ -22,9 +22,8 @@
 //   }
 // }
 impl Solution {
-    pub fn remove_zero_sum_sublists(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-
+    pub fn next_larger_nodes(head: Option<Box<ListNode>>) -> Vec<i32> {
+        let mut v = vec![]
     }
 }
 // @lc code=end
-
