@@ -38,7 +38,7 @@ Rust 解决数据结构问题相比于其他语言十分的困难，就在于变
 
 ##### 遍历链表
 
-通常使用可变引用来遍历
+通常使用可变引用来遍历, 注意这里需要对 `Option<Box<ListNode>>` struct 使用 as_ref 或者 as_mut 来进行引用遍历。根据官方文档的解释，我们可以看出 as_ref 在这里的作用是 `Converts from &Option<T> to Option<&T>`。
 
 ```rust
 
@@ -94,7 +94,8 @@ let next_node = node.next.take();
 [两两交换链表中的节点|swap_pairs](./linkList/medium/swap_pairs/src/lib.rs)  
 [删除链表的倒数第 N 个节点|remove_nth_from_end](./linkList/medium/remove_nth_from_end/src/lib.rs)
 [合并两个链表|merge_in_between](./linkList/medium/merge_in_between/src/lib.rs)  
-[旋转链表|rotate_right](./linkList/medium/rotate_right/src/lib.rs)
+[旋转链表|rotate_right](./linkList/medium/rotate_right/src/lib.rs)  
+[从链表中删去总和值为零的连续节点|remove_zero_sum_sublists](./linkList/medium/remove_zero_sum_sublists/src/lib.rs)  
 
 ### Tree
 
