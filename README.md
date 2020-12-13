@@ -96,6 +96,7 @@ let next_node = node.next.take();
 [合并两个链表|merge_in_between](./linkList/medium/merge_in_between/src/lib.rs)  
 [旋转链表|rotate_right](./linkList/medium/rotate_right/src/lib.rs)  
 [从链表中删去总和值为零的连续节点|remove_zero_sum_sublists](./linkList/medium/remove_zero_sum_sublists/src/lib.rs)  
+[链表中的下一个更大节点|next_larger_nodes](./linkList/medium/next_larger_nodes/src/lib.rs)  
 
 ### Tree
 
