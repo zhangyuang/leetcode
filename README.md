@@ -138,6 +138,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [不同的二叉搜索树|num_trees](./tree/medium/num_trees/src/lib.rs)  
 [验证二叉搜索树|is_valid_bst](./tree/medium/is_valid_bst/src/lib.rs)  
 [二叉树的锯齿形层次遍历|zigzag_level_order](./tree/medium/zigzag_level_order/src/lib.rs)  
+[最长同值路径|longest_univalue_path](./tree/medium/longest_univalue_path/src/lib.rs)  
 
 #### Hard
 
