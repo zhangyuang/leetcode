@@ -17,6 +17,43 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 [官方 API 文档](https://doc.rust-lang.org/std/index.html)  
 [Rust 程序设计语言中文版](https://kaisery.github.io/trpl-zh-cn/)
 
+## debug in VSCode
+
+建议本地编码时使用 VSCode 自带的 lldb 调试功能来进行断点调试，提升开发效率
+
+```json
+// setting.json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "cargo": {
+        "args": [
+          "test",
+          "--manifest-path=.test_repo/Cargo.toml"
+        ],
+        "filter": {
+          "name": "leetcodebyrust",
+          "kind": "lib"
+        }
+      },
+    }
+  ]
+}
+```
+
+f5/fn+f5 启动调试
+
+![](./images/vscode.png)
+
 ## 分类
 
 [链表(linkedList)](#linkedList)  
@@ -38,7 +75,7 @@ Rust 解决数据结构问题相比于其他语言十分的困难，就在于变
 
 ##### 遍历链表
 
-通常使用可变引用来遍历, 注意这里需要对 `Option<Box<ListNode>>` struct 使用 as_ref 或者 as_mut 来进行引用遍历。根据官方文档的解释，我们可以看出 as_ref 在这里的作用是 `Converts from &Option<T> to Option<&T>`。
+通常使用可变引用来遍历, 注意这里需要对 `Option<Box<ListNode>>` struct 使用 as_ref 或者 as_mut 来进行引用遍历。根据官方文档的解释，我们可以看出 as_ref/as_mut 在这里的作用是 `Converts from &Option<T> to Option<&T>`。
 
 ```rust
 
@@ -139,6 +176,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [验证二叉搜索树|is_valid_bst](./tree/medium/is_valid_bst/src/lib.rs)  
 [二叉树的锯齿形层次遍历|zigzag_level_order](./tree/medium/zigzag_level_order/src/lib.rs)  
 [最长同值路径|longest_univalue_path](./tree/medium/longest_univalue_path/src/lib.rs)  
+[前缀树|Trie](./tree/medium/Trie/src/lib.rs)  
 
 #### Hard
 

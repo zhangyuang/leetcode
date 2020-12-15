@@ -8,9 +8,20 @@
       "type": "lldb",
       "request": "launch",
       "name": "Debug",
-      "program": "${workspaceFolder}/.test_repo/src/lib.rs",
       "args": [],
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "cargo": {
+        "args": [
+          "test",
+          // "--no-run",
+          // "--lib",
+          "--manifest-path=.test_repo/Cargo.toml"
+        ],
+        "filter": {
+          "name": "leetcodebyrust",
+          "kind": "lib"
+        }
+      },
     }
   ]
 }
