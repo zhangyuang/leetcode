@@ -24,9 +24,6 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 ```json
 // setting.json
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
@@ -50,9 +47,9 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 }
 ```
 
-f5/fn+f5 启动调试
+`F5/Fn+F5` 启动调试
 
-![](./images/vscode.png)
+<img src="./images/vscode.png" style="width:300px" />
 
 ## 分类
 
