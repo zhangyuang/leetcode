@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=235 lang=rust
+ * @lc app=leetcode.cn id=572 lang=rust
  *
- * [235] 二叉搜索树的最近公共祖先
+ * [572] 另一个树的子树
  */
 
 // @lc code=start
@@ -12,7 +12,7 @@
 //   pub left: Option<Rc<RefCell<TreeNode>>>,
 //   pub right: Option<Rc<RefCell<TreeNode>>>,
 // }
-// 
+//
 // impl TreeNode {
 //   #[inline]
 //   pub fn new(val: i32) -> Self {
@@ -26,8 +26,8 @@
 use std::rc::Rc;
 use std::cell::RefCell;
 impl Solution {
-    pub fn lowest_common_ancestor(root: Option<Rc<RefCell<TreeNode>>>, p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
-        
+    pub fn is_subtree(s: Option<Rc<RefCell<TreeNode>>>, t: Option<Rc<RefCell<TreeNode>>>) -> bool {
+
     }
 }
 // @lc code=end

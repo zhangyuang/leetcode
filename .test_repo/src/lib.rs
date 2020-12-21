@@ -1,11 +1,10 @@
 /*
- * @lc app=leetcode.cn id=235 lang=rust
+ * @lc app=leetcode.cn id=572 lang=rust
  *
- * [235] 二叉搜索树的最近公共祖先
+ * [572] 另一个树的子树
  */
 
-// Definition for a binary tree node.
-#[derive(Debug, PartialEq, Eq)]
+// #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
     pub val: i32,
     pub left: Option<Rc<RefCell<TreeNode>>>,
@@ -45,58 +44,32 @@ struct Solution {}
 use std::cell::RefCell;
 use std::rc::Rc;
 impl Solution {
-    pub fn lowest_common_ancestor(
-        root: Option<Rc<RefCell<TreeNode>>>,
-        p: Option<Rc<RefCell<TreeNode>>>,
-        q: Option<Rc<RefCell<TreeNode>>>,
-    ) -> Option<Rc<RefCell<TreeNode>>> {
-        // 记录路径
-        if root.is_none() {
-            return None;
+    pub fn is_subtree(
+        mut s: Option<Rc<RefCell<TreeNode>>>,
+        mut t: Option<Rc<RefCell<TreeNode>>>,
+    ) -> bool {
+        if s.is_none() && t.is_none() {
+            return true;
         }
-        if p.is_none() {
-            return q;
+        if s.is_none() && t.is_some() {
+            return false;
         }
-        if q.is_none() {
-            return p;
+        if s.is_some() && t.is_none() {
+            return false;
         }
-        let mut path_q = vec![];
-        let mut path_p = vec![];
-        Self::find_path(&root, &mut path_q, &q);
-        Self::find_path(&root, &mut path_p, &p);
-        for i in 0..path_q.len() {
-            let index = path_p.iter().position(|x| *x == path_q[i]);
-            if index.is_some() {
-                return path_p[index.unwrap()].take();
-            }
-        }
-        None
-    }
-    fn find_path(
-        // 自底向上记录path
-        root: &Option<Rc<RefCell<TreeNode>>>,
-        v: &mut Vec<Option<Rc<RefCell<TreeNode>>>>,
-        node: &Option<Rc<RefCell<TreeNode>>>,
-    ) {
-        if root.is_none() {
-            return;
-        }
-        let root_val = root.as_ref().unwrap().borrow().val;
-        let node_val = node.as_ref().unwrap().borrow().val;
-        if root_val == node_val {
-            v.push(Some(Rc::clone(root.as_ref().unwrap())));
-            return;
-        }
-        let right = &root.as_ref().unwrap().borrow().right;
-        let left = &root.as_ref().unwrap().borrow().left;
-
-        if root_val < node_val {
-            Self::find_path(right, v, node);
-            v.push(Some(Rc::clone(root.as_ref().unwrap())))
-        } else {
-            Self::find_path(left, v, node);
-            v.push(Some(Rc::clone(root.as_ref().unwrap())))
-        }
+        let mut s_borrow = s.as_ref().unwrap().borrow();
+        let s_val = s_borrow.val;
+        let s_left = s_borrow.left.clone();
+        let s_right = s_borrow.right.clone();
+        let mut t_borrow = t.as_ref().unwrap().borrow();
+        let t_val = t_borrow.val;
+        let t_left = t_borrow.left.clone();
+        let t_right = t_borrow.right.clone();
+        return (s_val == t_val
+            && Self::is_subtree(s_left.clone(), t_left)
+            && Self::is_subtree(s_right.clone(), t_right))
+            || Self::is_subtree(s_left, t.clone())
+            || Self::is_subtree(s_right, t.clone());
     }
 }
 // @lc code=end
