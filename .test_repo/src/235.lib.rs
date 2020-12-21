@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=105 lang=rust
+ * @lc app=leetcode.cn id=235 lang=rust
  *
- * [105] 从前序与中序遍历序列构造二叉树
+ * [235] 二叉搜索树的最近公共祖先
  */
 
 // @lc code=start
@@ -26,7 +26,7 @@
 use std::rc::Rc;
 use std::cell::RefCell;
 impl Solution {
-    pub fn build_tree(preorder: Vec<i32>, inorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn lowest_common_ancestor(root: Option<Rc<RefCell<TreeNode>>>, p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
         
     }
 }
