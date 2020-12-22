@@ -106,6 +106,27 @@ let next_node = node.next.take();
 
 ```
 
+#### 树
+
+Rust 解决 树 题思路
+
+###### 共享树节点
+
+这里我们尽量不使用 clone 或者 take 来重复获取树节点的所有权，这样会导致性能低下以及影响入参树的数据结构, 这里我们使用 Rc::clone
+
+```rust
+let root_borrow = root.as_ref().unwrap().borrow();
+let left = if root_borrow.left.is_some() {
+    Some(Rc::clone(root_borrow.left.as_ref().unwrap()))
+} else {
+    None
+};
+let right = if root_borrow.right.is_some() {
+    Some(Rc::clone(root_borrow.right.as_ref().unwrap()))
+} else {
+    None
+};
+```
 #### 解题代码
 
 皆通过 leetcode 测试用例，可直接粘贴到 leetcode 编辑器中调试，刷题建议由浅入深，按知识点来刷,不要左右横跳。
