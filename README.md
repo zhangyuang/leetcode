@@ -198,6 +198,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [前缀树|Trie](./tree/medium/Trie/src/lib.rs)  
 [从前序与中序遍历序列构造二叉树|build_tree](./tree/medium/build_tree/src/lib.rs)  
 [从中序与后序遍历序列构造二叉树|build_tree_postorder](./tree/medium/build_tree_postorder/src/lib.rs)  
+[最大二叉树|construct_maximum_binary_tree](./tree/medium/construct_maximum_binary_tree/src/lib.rs)  
 
 
 #### Hard
