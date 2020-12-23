@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=654 lang=rust
+ * @lc app=leetcode.cn id=889 lang=rust
  *
- * [654] 最大二叉树
+ * [889] 根据前序和后序遍历构造二叉树
  */
 
 // @lc code=start
@@ -26,7 +26,7 @@
 use std::rc::Rc;
 use std::cell::RefCell;
 impl Solution {
-    pub fn construct_maximum_binary_tree(nums: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn construct_from_pre_post(pre: Vec<i32>, post: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
         
     }
 }
