@@ -199,7 +199,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [从前序与中序遍历序列构造二叉树|build_tree](./tree/medium/build_tree/src/lib.rs)  
 [根据前序和后序遍历构造二叉树|construct_from_pre_post](./tree/medium/construct_from_pre_post/src/lib.rs)  
 [最大二叉树|construct_maximum_binary_tree](./tree/medium/construct_maximum_binary_tree/src/lib.rs)  
-[最大二叉树|construct_maximum_binary_tree](./tree/medium/construct_maximum_binary_tree/src/lib.rs)  
+[完全二叉树的节点个数|count_nodes](./tree/medium/count_nodes/src/lib.rs)  
 
 
 #### Hard
