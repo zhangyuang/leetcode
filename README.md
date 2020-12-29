@@ -182,6 +182,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [把二叉搜索树转换为累加树|convert_bst](./tree/easy/convert_bst/src/lib.rs)  
 [将有序数组转换为二叉搜索树|sorted_array_to_bst](./tree/easy/sorted_array_to_bst/src/lib.rs)  
 [另一个树的子树|is_subtree](./tree/easy/is_subtree/src/lib.rs)  
+[叶子相似的树|leaf_similar](./tree/easy/leaf_similar/src/lib.rs)  
 
 #### Medium
 
