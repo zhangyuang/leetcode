@@ -1,82 +1,54 @@
 /*
- * @lc app=leetcode.cn id=872 lang=rust
+ * @lc app=leetcode.cn id=63 lang=rust
  *
- * [872] 叶子相似的树
+ * [63] 不同路径 II
  */
-// Definition for a binary tree node.
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
-}
 struct Solution {}
 // @lc code=start
-// Definition for a binary tree node.
-// #[derive(Debug, PartialEq, Eq)]
-// pub struct TreeNode {
-//   pub val: i32,
-//   pub left: Option<Rc<RefCell<TreeNode>>>,
-//   pub right: Option<Rc<RefCell<TreeNode>>>,
-// }
-//
-// impl TreeNode {
-//   #[inline]
-//   pub fn new(val: i32) -> Self {
-//     TreeNode {
-//       val,
-//       left: None,
-//       right: None
-//     }
-//   }
-// }
-use std::cell::RefCell;
-use std::rc::Rc;
 impl Solution {
-    pub fn leaf_similar(
-        root1: Option<Rc<RefCell<TreeNode>>>,
-        root2: Option<Rc<RefCell<TreeNode>>>,
-    ) -> bool {
-        let mut leaf_1 = vec![];
-        Self::get_leaf(&root1, &mut leaf_1);
-        let mut leaf_2 = vec![];
-        Self::get_leaf(&root2, &mut leaf_2);
-        if leaf_1.len() != leaf_2.len() {
-            return false;
-        }
-        let mut res = true;
-        for i in 0..leaf_1.len() {
-            if leaf_1[i] != leaf_2[i] {
-                res = false;
-                break;
+    pub fn unique_paths_with_obstacles(obstacle_grid: Vec<Vec<i32>>) -> i32 {
+        let m = obstacle_grid.len();
+        let n = obstacle_grid[0].len();
+        let mut dp = vec![vec![1; n]; m];
+        // 特殊处理第一列的情况
+        let mut hasObstacle = false;
+        for i in 0..n {
+            if obstacle_grid[0][i] == 1 {
+                hasObstacle = true
+            }
+            if hasObstacle {
+                dp[0][i] = 0
             }
         }
-        res
-    }
-    fn get_leaf(root: &Option<Rc<RefCell<TreeNode>>>, v: &mut Vec<i32>) {
-        if root.is_none() {
-            return;
+        hasObstacle = false;
+        // 特殊处理第一行的情况
+        for i in 0..m {
+            if obstacle_grid[i][0] == 1 {
+                hasObstacle = true
+            }
+            if hasObstacle {
+                dp[i][0] = 0
+            }
         }
-        let root_borrow = root.as_ref().unwrap().borrow();
-        let left = &root_borrow.left;
-        let right = &root_borrow.right;
-        if left.is_none() && right.is_none() {
-            v.push(root_borrow.val);
-            return;
+        for i in 1..m {
+            for j in 1..n {
+                let top = if obstacle_grid[i - 1][j] == 1 {
+                    0
+                } else {
+                    dp[i - 1][j]
+                };
+                let left = if obstacle_grid[i][j - 1] == 1 {
+                    0
+                } else {
+                    dp[i][j - 1]
+                };
+                dp[i][j] = top + left;
+                if obstacle_grid[i][j] == 1 {
+                    dp[i][j] = 0
+                }
+            }
         }
-        Self::get_leaf(left, v);
-        Self::get_leaf(right, v);
+        dp[m - 1][n - 1]
     }
 }
 // @lc code=end
