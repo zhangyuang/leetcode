@@ -1,54 +1,72 @@
 /*
- * @lc app=leetcode.cn id=63 lang=rust
+ * @lc app=leetcode.cn id=303 lang=rust
  *
- * [63] 不同路径 II
+ * [303] 区域和检索 - 数组不可变
  */
-struct Solution {}
+
 // @lc code=start
-impl Solution {
-    pub fn unique_paths_with_obstacles(obstacle_grid: Vec<Vec<i32>>) -> i32 {
-        let m = obstacle_grid.len();
-        let n = obstacle_grid[0].len();
-        let mut dp = vec![vec![1; n]; m];
-        // 特殊处理第一列的情况
-        let mut hasObstacle = false;
-        for i in 0..n {
-            if obstacle_grid[0][i] == 1 {
-                hasObstacle = true
-            }
-            if hasObstacle {
-                dp[0][i] = 0
-            }
+struct NumArray {
+    nums: Vec<i32>,
+    subscript: Vec<i32>, // 代表 以 i 为 右侧索引的范围和
+}
+
+/**
+ * `&self` means the method takes an immutable reference.
+ * If you need a mutable reference, change it to `&mut self` instead.
+ */
+impl NumArray {
+    // fn new(nums: Vec<i32>) -> Self {
+    //     NumArray {
+    //         subscript: vec![0; nums.len()],
+    //         nums,
+    //     }
+    // }
+
+    // fn sum_range(&mut self, i: i32, j: i32) -> i32 {
+    //     let start = i as usize;
+    //     let end = j as usize;
+    //     if start != 0 && self.subscript[start - 1] == 0 {
+    //         let mut sum = 0;
+    //         for i in 0..=start - 1 {
+    //             sum += self.nums[i]
+    //         }
+    //         self.subscript[start - 1] = sum
+    //     }
+    //     if self.subscript[end] == 0 {
+    //         let mut sum = 0;
+    //         for i in 0..=end {
+    //             sum += self.nums[i]
+    //         }
+    //         self.subscript[end] = sum
+    //     }
+    //     if start == 0 {
+    //         self.subscript[end]
+    //     } else {
+    //         self.subscript[end] - self.subscript[start - 1]
+    //     }
+    // }
+    fn new(nums: Vec<i32>) -> Self {
+        let mut subscript = vec![0; nums.len()];
+        let mut sum = 0;
+        for i in 0..nums.len() {
+            sum += nums[i];
+            subscript[i] = sum;
         }
-        hasObstacle = false;
-        // 特殊处理第一行的情况
-        for i in 0..m {
-            if obstacle_grid[i][0] == 1 {
-                hasObstacle = true
-            }
-            if hasObstacle {
-                dp[i][0] = 0
-            }
+        NumArray { subscript, nums }
+    }
+
+    fn sum_range(&mut self, i: i32, j: i32) -> i32 {
+        if i == 0 {
+            self.subscript[j as usize]
+        } else {
+            self.subscript[j as usize] - self.subscript[i as usize - 1]
         }
-        for i in 1..m {
-            for j in 1..n {
-                let top = if obstacle_grid[i - 1][j] == 1 {
-                    0
-                } else {
-                    dp[i - 1][j]
-                };
-                let left = if obstacle_grid[i][j - 1] == 1 {
-                    0
-                } else {
-                    dp[i][j - 1]
-                };
-                dp[i][j] = top + left;
-                if obstacle_grid[i][j] == 1 {
-                    dp[i][j] = 0
-                }
-            }
-        }
-        dp[m - 1][n - 1]
     }
 }
+
+// /**
+//  * Your NumArray object will be instantiated and called as such:
+//  * let obj = NumArray::new(nums);
+//  * let ret_1: i32 = obj.sum_range(i, j);
+//  */
 // @lc code=end

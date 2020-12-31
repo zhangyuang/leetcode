@@ -229,6 +229,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [使用最小花费爬楼梯|min_cost_climbing_stairs](./dynamic-programing/easy/min_cost_climbing_stairs/src/lib.rs)  
 [买卖股票的最佳时机|max_profit](./dynamic-programing/easy/max_profit/src/lib.rs)  
 [最长连续递增序列|find_length_of_lcis](./dynamic-programing/easy/find_length_of_lcis/src/lib.rs)  
+[区域和检索 - 数组不可变|NumArray](./dynamic-programing/easy/NumArray/src/lib.rs)  
 
 #### Medium
 
@@ -240,6 +241,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [最长回文子串|longest_palindrome](./dynamic-programing/medium/longest_palindrome/src/lib.rs)  
 [打家劫舍 II|robs](./dynamic-programing/medium/robs/src/lib.rs)  
 [打家劫舍 III|robs](./dynamic-programing/medium/robs3/src/lib.rs)  
+[不同路径 II|unique_paths_with_obstacles](./dynamic-programing/medium/unique_paths_with_obstacles/src/lib.rs)   
 
 ### HOT100🔥
 
@@ -267,7 +269,6 @@ Hot100类型题
 [子集|subsets](./hot100/medium/subsets/src/lib.rs)  
 [零钱兑换|coin_change](./hot100/medium/coin_change/src/lib.rs)  
 [不同路径|unique_paths](./hot100/medium/unique_paths/src/lib.rs)  
-[不同路径 II|unique_paths_with_obstacles](./hot100/medium/unique_paths_with_obstacles/src/lib.rs)  
 [单词搜索|exist](./hot100/medium/exist/src/lib.rs)  
 [单词拆分|word_break](./hot100/medium/word_break/src/lib.rs)  
 [无重复字符的最长子串|length_of_longest_substring](./hot100/medium/length_of_longest_substring/src/lib.rs)  

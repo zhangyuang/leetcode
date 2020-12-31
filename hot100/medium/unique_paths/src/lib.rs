@@ -21,7 +21,7 @@ impl Solution {
     // 2压缩数组后
     let m = m as usize;
     let n = n as usize;
-    let mut dp = vec![1; n]; // dp[i][j]的含义为i*j的网格有多少条路径
+    let mut dp = vec![1; n]; // dp[j]的含义为i*j的网格有多少条路径
     for i in 1..m {
       for j in 1..n {
         dp[j] = dp[j] + dp[j - 1]
