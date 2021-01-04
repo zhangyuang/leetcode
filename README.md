@@ -243,6 +243,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [打家劫舍 III|robs](./dynamic-programing/medium/robs3/src/lib.rs)  
 [不同路径 II|unique_paths_with_obstacles](./dynamic-programing/medium/unique_paths_with_obstacles/src/lib.rs)   
 [二维区域和检索 - 矩阵不可变|NumMatrix](./dynamic-programing/medium/NumMatrix/src/lib.rs)   
+[完全平方数|num_squares](./dynamic-programing/medium/num_squares/src/lib.rs)   
 
 ### HOT100🔥
 
