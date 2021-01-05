@@ -14,6 +14,7 @@ impl Solution {
             dp[i] = i;
             let mut j = 1;
             while i >= j * j {
+                // 找到相差一个完全平方数的最小结果+1
                 dp[i] = min(dp[i], dp[i - j * j] + 1);
                 j += 1;
             }
