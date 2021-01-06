@@ -230,6 +230,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [买卖股票的最佳时机|max_profit](./dynamic-programing/easy/max_profit/src/lib.rs)  
 [最长连续递增序列|find_length_of_lcis](./dynamic-programing/easy/find_length_of_lcis/src/lib.rs)  
 [区域和检索 - 数组不可变|NumArray](./dynamic-programing/easy/NumArray/src/lib.rs)  
+[有序数组的平方|sorted_squares](./dynamic-programing/easy/sorted_squares/src/lib.rs)  
 
 #### Medium
 

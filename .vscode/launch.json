@@ -13,8 +13,8 @@
       "cargo": {
         "args": [
           "test",
-          // "--no-run",
-          // "--lib",
+          "--no-run",
+          "--lib",
           "--manifest-path=.test_repo/Cargo.toml"
         ],
         "filter": {
