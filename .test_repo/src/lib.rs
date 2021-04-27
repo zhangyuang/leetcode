@@ -1,38 +1,55 @@
 /*
- * @lc app=leetcode.cn id=977 lang=rust
+ * @lc app=leetcode.cn id=83 lang=rust
  *
- * [977] 有序数组的平方
+ * [83] 删除排序链表中的重复元素
  */
 struct Solution {}
-// @lc code=start
+// Definition for singly-linked list.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
 
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
+    }
+}
+// @lc code=start
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>
+// }
+//
+// impl ListNode {
+//   #[inline]
+//   fn new(val: i32) -> Self {
+//     ListNode {
+//       next: None,
+//       val
+//     }
+//   }
+// }
 impl Solution {
-    pub fn sorted_squares(mut nums: Vec<i32>) -> Vec<i32> {
-        let mut dp = vec![];
-        let mut start = 0;
-        let mut end = nums.len() - 1;
-        while start <= end {
-            let mut val;
-            if nums[start].abs() >= nums[end].abs() {
-                val = nums[start];
-                start += 1;
-            } else {
-                val = nums[end];
-                end -= 1;
-            };
-            dp.push(val * val)
+    pub fn delete_duplicates(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        if head.is_none() || head.as_ref()?.next.is_none() {
+            return head;
         }
-        dp.reverse();
-        dp
+        let mut root = &mut head;
+        while let Some(node) = root {
+            let next_node = &mut node.next;
+            let next_node_next = next_node.as_ref()?.next.clone();
+            if next_node.as_ref()?.val == node.val {
+                node.next = next_node_next;
+            }
+            println!("{:?}", node);
+            root = &mut node.next;
+        }
+        head
     }
 }
 // @lc code=end
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn tests() {
-        println!("{:?}", Solution::sorted_squares(vec![1]))
-    }
-}

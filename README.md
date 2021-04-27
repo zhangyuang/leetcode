@@ -80,7 +80,7 @@ let mut root = &mut head;
 while let Some(node) = root {
   let next_node = &mut node.next;
   // 使用as_mut获取next_node的引用，使用&mut获取.next的引用。以此来获取root下一个节点的下一个节点的引用。直接使用unwrap会导致所有权的move
-  let next_node_next = &mut next_node.as_mut()?.next
+  let next_node_next = &mut next_node.as_mut()?.next;
   // 这里面不能再直接使用head，因为head的所有权已经借给了root，在循环体中未归还
   // other code...
   root = &mut node.next;
