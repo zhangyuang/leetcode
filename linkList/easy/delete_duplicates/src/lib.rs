@@ -1,3 +1,9 @@
+/*
+ * @lc app=leetcode.cn id=83 lang=rust
+ *
+ * [83] 删除排序链表中的重复元素
+ */
+struct Solution {}
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -11,56 +17,40 @@ impl ListNode {
     ListNode { next: None, val }
   }
 }
-
-struct Solution {}
-
-use std::collections::HashMap;
-
+// @lc code=start
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>
+// }
+//
+// impl ListNode {
+//   #[inline]
+//   fn new(val: i32) -> Self {
+//     ListNode {
+//       next: None,
+//       val
+//     }
+//   }
+// }
 impl Solution {
-  pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-    if head.is_none() {
-      return None;
+  pub fn delete_duplicates(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    if head.is_none() || head.as_ref()?.next.is_none() {
+      return head;
     }
-
-    let mut head = Some(Box::new(ListNode {
-      val: 99999, // 防止与用例value冲突
-      next: head,
-    }));
-    let mut head_clone = head.clone();
-    let mut hashMap = HashMap::new();
     let mut root = &mut head;
-    while let Some(node) = root {
-      if hashMap.get(&node.val).is_none() {
-        hashMap.insert(node.val, true);
+
+    while root.is_some() && root.as_mut()?.next.is_some() {
+      let mut node = root.as_mut().unwrap();
+      let next_node = &mut node.next;
+      if next_node.as_ref()?.val == node.val {
+        node.next = next_node.as_mut()?.next.take();
       } else {
-        head_clone = delete_node(head_clone, node.val); // 这里不能直接用head，因为所有权暂时借给了root
-      }
-      root = &mut node.next;
-    }
-    head_clone.unwrap().next
-  }
-}
-
-fn delete_node(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
-  let mut head = Some(Box::new(ListNode {
-    val: 99999,
-    next: head,
-  }));
-  let mut root = &mut head;
-  while let Some(node) = root {
-    let next_node_option = &mut node.next;
-    match next_node_option {
-      None => break,
-      Some(next_node_box) => {
-        if next_node_box.val == val {
-          // 当前节点的下一个节点等于目标节点
-          node.next = next_node_box.next.take();
-          break;
-        }
+        root = &mut root.as_mut()?.next;
       }
     }
-    root = &mut node.next;
+    head
   }
-
-  head.unwrap().next
 }
+// @lc code=end

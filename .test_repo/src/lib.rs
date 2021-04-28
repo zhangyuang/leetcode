@@ -40,14 +40,15 @@ impl Solution {
             return head;
         }
         let mut root = &mut head;
-        while let Some(node) = root {
+
+        while root.is_some() && root.as_mut()?.next.is_some() {
+            let mut node = root.as_mut().unwrap();
             let next_node = &mut node.next;
-            let next_node_next = next_node.as_ref()?.next.clone();
             if next_node.as_ref()?.val == node.val {
-                node.next = next_node_next;
+                node.next = next_node.as_mut()?.next.take();
+            } else {
+                root = &mut root.as_mut()?.next;
             }
-            println!("{:?}", node);
-            root = &mut node.next;
         }
         head
     }
