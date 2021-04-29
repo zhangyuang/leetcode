@@ -152,6 +152,8 @@ let right = if root_borrow.right.is_some() {
 [旋转链表|rotate_right](./linkList/medium/rotate_right/src/lib.rs)  
 [从链表中删去总和值为零的连续节点|remove_zero_sum_sublists](./linkList/medium/remove_zero_sum_sublists/src/lib.rs)  
 [链表中的下一个更大节点|next_larger_nodes](./linkList/medium/next_larger_nodes/src/lib.rs)  
+[删除链表重复节点 2|delete_duplicate](./linkList/medium/delete_duplicate/src/lib.rs)
+
 
 ### Tree
 

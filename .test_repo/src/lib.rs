@@ -1,10 +1,9 @@
 /*
- * @lc app=leetcode.cn id=83 lang=rust
+ * @lc app=leetcode.cn id=82 lang=rust
  *
- * [83] 删除排序链表中的重复元素
+ * [82] 删除排序链表中的重复元素 II
  */
 struct Solution {}
-// Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
@@ -35,22 +34,38 @@ impl ListNode {
 //   }
 // }
 impl Solution {
-    pub fn delete_duplicates(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        if head.is_none() || head.as_ref()?.next.is_none() {
-            return head;
-        }
-        let mut root = &mut head;
-
+    pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut phead = Some(Box::new(ListNode {
+            val: -1,
+            next: head,
+        }));
+        let mut root = &mut phead;
         while root.is_some() && root.as_mut()?.next.is_some() {
-            let mut node = root.as_mut().unwrap();
-            let next_node = &mut node.next;
-            if next_node.as_ref()?.val == node.val {
-                node.next = next_node.as_mut()?.next.take();
-            } else {
-                root = &mut root.as_mut()?.next;
+            let root_next = &mut root.as_mut()?.next;
+            let root_next_ref = root_next.as_mut()?;
+            let root_next_next = &mut root_next_ref.next;
+            if root_next_next.is_some() {
+                if root_next_ref.val == root_next_next.as_ref()?.val {
+                    let res = root_next_ref.val;
+                    let mut guard = root_next_next;
+                    while guard.is_some() {
+                        // 找到第一个值不等于重复值的节点
+                        if guard.as_ref()?.val != res {
+                            break;
+                        }
+                        guard = &mut guard.as_mut()?.next;
+                    }
+                    if guard.is_some() {
+                        root.as_mut()?.next = guard.take();
+                        continue;
+                    } else {
+                        root.as_mut()?.next = None;
+                    }
+                }
             }
+            root = &mut root.as_mut()?.next;
         }
-        head
+        phead.as_mut()?.next.take()
     }
 }
 // @lc code=end
