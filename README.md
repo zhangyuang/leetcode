@@ -19,7 +19,7 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 
 ## debug in VSCode
 
-建议本地编码时使用 VSCode 自带的 lldb 调试功能来进行断点调试，提升开发效率
+建议本地编码时使用 `VSCode` 自带的 `lldb` 调试功能来进行断点调试，提升开发效率
 
 ```json
 // setting.json
@@ -50,6 +50,14 @@ Solve questions in [leetcode](https://leetcode-cn.com/) by Rust
 `F5/Fn+F5` 启动调试
 
 <img src="./images/vscode.png" style="width:300px" />
+
+### lldb 调试 Rust
+
+我们通过 `lldb` 来调试 `Rust` 代码，同样我们会经常需要在 `Debug Console` 中打印出当前的一些变量值。这里需要特殊配置，根据 [VScode LLDB](https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#debug-console) 文档描述 `Debug Console` 提供两种执行模式。分别是以 `lldb commands` 模式执行，或者 `expressions` 表达式的形式执行。
+
+当我们需要进行表达式求值时需要在前面加上 `?` 符号。例如 `?foo` 打印 `foo` 的值。
+
+也可以通过 `settings.json` 中配置 `"lldb.consoleMode": "evaluate"` 默认启用 `evaluate` 模式，不再需要输入 `?` 符号。此时调用 `lldb commands` 需要添加 `/cmd` 开头
 
 ## 分类
 
