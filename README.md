@@ -307,6 +307,10 @@ Hot100类型题
 [用栈操作构建数组|build_array](./others/easy/build_array/src/lib.rs)  
 [判断子序列|is_subsequence](./others/easy/is_subsequence/src/lib.rs)  
 
+#### Medium
+
+[807 保持城市天际线](./others/medium/max_increase_keeping_skyline/src/lib.rs)
+
 #### Hard
 
 [缺失的第一个正数|first_missing_positive](./others/hard/first_missing_positive/src/lib.rs)  

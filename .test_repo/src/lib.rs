@@ -1,71 +1,51 @@
 /*
- * @lc app=leetcode.cn id=82 lang=rust
+ * @lc app=leetcode.cn id=807 lang=rust
  *
- * [82] 删除排序链表中的重复元素 II
+ * [807] 保持城市天际线
  */
 struct Solution {}
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct ListNode {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>,
-}
 
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
 // @lc code=start
-// Definition for singly-linked list.
-// #[derive(PartialEq, Eq, Clone, Debug)]
-// pub struct ListNode {
-//   pub val: i32,
-//   pub next: Option<Box<ListNode>>
-// }
-//
-// impl ListNode {
-//   #[inline]
-//   fn new(val: i32) -> Self {
-//     ListNode {
-//       next: None,
-//       val
-//     }
-//   }
-// }
 impl Solution {
-    pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut phead = Some(Box::new(ListNode {
-            val: -1,
-            next: head,
-        }));
-        let mut root = &mut phead;
-        while root.is_some() && root.as_mut()?.next.is_some() {
-            let root_next = &mut root.as_mut()?.next;
-            let root_next_ref = root_next.as_mut()?;
-            let root_next_next = &mut root_next_ref.next;
-            if root_next_next.is_some() {
-                if root_next_ref.val == root_next_next.as_ref()?.val {
-                    let res = root_next_ref.val;
-                    let mut guard = root_next_next;
-                    while guard.is_some() {
-                        // 找到第一个值不等于重复值的节点
-                        if guard.as_ref()?.val != res {
-                            break;
-                        }
-                        guard = &mut guard.as_mut()?.next;
-                    }
-                    if guard.is_some() {
-                        root.as_mut()?.next = guard.take();
-                        continue;
-                    } else {
-                        root.as_mut()?.next = None;
-                    }
-                }
-            }
-            root = &mut root.as_mut()?.next;
-        }
-        phead.as_mut()?.next.take()
+    pub fn max_increase_keeping_skyline(grid: Vec<Vec<i32>>) -> i32 {
+        let n = grid.len();
+        if n == 0 {
+            return 0;
+        };
+        let mut res = 0;
+        let row_max = grid
+            .iter()
+            .map(|val| *val.iter().max().unwrap())
+            .collect::<Vec<i32>>();
+        let mut col_max: Vec<i32> = vec![-1; n];
+        grid.iter().enumerate().for_each(|(i, row)| {
+            row.iter().enumerate().for_each(|(j, val)| {
+                let max = val.max(&col_max[j]);
+                col_max[j] = *max;
+            })
+        });
+        grid.iter().enumerate().for_each(|(i, row)| {
+            row.iter()
+                .enumerate()
+                .for_each(|(j, _)| res += row_max[i].min(col_max[j]) - grid[i][j])
+        });
+        return res;
     }
 }
 // @lc code=end
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tests() {
+        let grid = vec![
+            vec![3, 0, 8, 4],
+            vec![2, 4, 5, 7],
+            vec![9, 2, 6, 3],
+            vec![0, 3, 1, 0],
+        ];
+        Solution::max_increase_keeping_skyline(grid);
+    }
+}
