@@ -310,6 +310,8 @@ Hot100类型题
 #### Medium
 
 [807 保持城市天际线](./others/medium/max_increase_keeping_skyline/src/lib.rs)
+[11 盛最多水的容器](./others/medium/max_area/src/lib.rs)
+
 
 #### Hard
 
