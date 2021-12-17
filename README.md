@@ -305,7 +305,8 @@ Hot100类型题
 [用队列实现栈|MyStack](./others/easy/MyStack/src/lib.rs)  
 [最小栈|MinStack](./others/easy/MinStack/src/lib.rs)  
 [用栈操作构建数组|build_array](./others/easy/build_array/src/lib.rs)  
-[判断子序列|is_subsequence](./others/easy/is_subsequence/src/lib.rs)  
+[判断子序列|is_subsequence](./others/easy/is_subsequence/src/lib.rs) 
+[821 字符的最短距离](./others/easy/shortest_to_char/src/lib.rs)  
 
 #### Medium
 
