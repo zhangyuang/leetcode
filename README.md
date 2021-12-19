@@ -308,6 +308,8 @@ Hot100类型题
 [判断子序列|is_subsequence](./others/easy/is_subsequence/src/lib.rs)   
 [821 字符的最短距离](./others/easy/shortest_to_char/src/lib.rs)  
 [997 找到小镇的法官](./others/easy/find_judge/src/lib.rs)   
+[118 杨辉三角](./others/easy/generate/src/lib.rs)   
+
 
 #### Medium
 
