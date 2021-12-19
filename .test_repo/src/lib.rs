@@ -1,49 +1,41 @@
 /*
- * @lc app=leetcode.cn id=821 lang=rust
+ * @lc app=leetcode.cn id=997 lang=rust
  *
- * [821] 字符的最短距离
+ * [997] 找到小镇的法官
  */
 struct Solution {}
 
 // @lc code=start
-use std::i32::MAX;
 impl Solution {
-    pub fn shortest_to_char(s: String, c: char) -> Vec<i32> {
-        let mut arr = s.split("").collect::<Vec<&str>>();
-        arr = arr[1..arr.len() - 1].to_vec();
-        let mut ans = vec![0; arr.len()];
-        let mut pre: i32 = MAX;
-        for (i, val) in arr.iter().enumerate() {
-            if *val == c.to_string() {
-                pre = i as i32
+    pub fn find_judge(n: i32, trust: Vec<Vec<i32>>) -> i32 {
+        let mut in_degree: Vec<i32> = vec![0; n as usize];
+        let mut out_degree: Vec<i32> = vec![0; n as usize];
+        trust.iter().for_each(|v| {
+            in_degree[(v[1] - 1) as usize] = in_degree[(v[1] - 1) as usize] + 1;
+            out_degree[(v[0] - 1) as usize] = out_degree[(v[0] - 1) as usize] + 1;
+        });
+        let mut res: i32 = -1;
+
+        in_degree.iter().enumerate().for_each(|(i, val)| {
+            if *val == n - 1 && out_degree[i] == 0 {
+                res = (i + 1) as i32;
             }
-            ans[i] = (i as i32 - pre).abs()
-        }
-        let mut pre: i32 = 99999;
-        for (i, _) in arr.iter().enumerate().rev() {
-            if arr[i] == c.to_string() {
-                pre = i as i32
-            }
-            ans[i] = ans[i].min((i as i32 - pre).abs())
-        }
-        return ans;
+        });
+
+        return res;
     }
 }
 // @lc code=end
 
 #[cfg(test)]
-mod tests {
+mod test {
     use super::*;
 
     #[test]
     fn tests() {
         println!(
-            "{:?}",
-            Solution::shortest_to_char(String::from("aaab"), 'b')
-        );
-        println!(
-            "{:?}",
-            Solution::shortest_to_char(String::from("loveleetcode"), 'e')
-        );
+            "{}",
+            Solution::find_judge(3, vec![vec![1, 3], vec![2, 3], vec![3, 1]])
+        )
     }
 }

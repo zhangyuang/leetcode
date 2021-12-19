@@ -307,6 +307,7 @@ Hot100类型题
 [用栈操作构建数组|build_array](./others/easy/build_array/src/lib.rs)  
 [判断子序列|is_subsequence](./others/easy/is_subsequence/src/lib.rs)   
 [821 字符的最短距离](./others/easy/shortest_to_char/src/lib.rs)  
+[997 找到小镇的法官](./others/easy/find_judge/src/lib.rs)   
 
 #### Medium
 
