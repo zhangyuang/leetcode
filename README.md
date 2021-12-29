@@ -193,6 +193,7 @@ Rust 构造树需要使用 [Rc<T>引用计数智能指针](https://kaisery.githu
 [将有序数组转换为二叉搜索树|sorted_array_to_bst](./tree/easy/sorted_array_to_bst/src/lib.rs)  
 [另一个树的子树|is_subtree](./tree/easy/is_subtree/src/lib.rs)  
 [叶子相似的树|leaf_similar](./tree/easy/leaf_similar/src/lib.rs)  
+[563 二叉树的坡度](./tree/easy/find_tilt/src/lib.rs)  
 
 #### Medium
 
