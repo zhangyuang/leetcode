@@ -323,6 +323,8 @@ Hot100类型题
 [11 盛最多水的容器](./others/medium/max_area/src/lib.rs)  
 [475 供暖器](./others/medium/find_radius/src/lib.rs)  
 [390 消除游戏](./others/medium/last_remaining/src/lib.rs)  
+[334 递增的三元子序列](./others/medium/increasing_triplet/src/lib.rs)  
+[373 查找和最小的K对数字](./others/medium/k_smallest_pairs/src/lib.rs)  
 
 
 #### Hard
